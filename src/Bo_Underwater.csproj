@@ -7,8 +7,8 @@
     <ProjectGuid>{AF0AD84D-0994-49BC-93E0-0C9160E0C690}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bo_Underwater</RootNamespace>
-    <AssemblyName>Bo_Underwater</AssemblyName>
+    <RootNamespace>BoUnderwater</RootNamespace>
+    <AssemblyName>BoUnderwater</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

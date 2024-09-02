@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
-namespace Bo_Underwater
+namespace BoUnderwater
 {
     //pixelwizardy
     public class GameCondition_UnderWaterCondition : GameCondition
