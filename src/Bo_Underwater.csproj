@@ -76,8 +76,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompProperties_ProximityComp.cs" />
-    <Compile Include="GameCondition_UnderWater.cs" />
+    <Compile Include="Comps\CompProperties_ProximityComp.cs" />
+    <Compile Include="Comps\CompProperties_Proximity_ShowMote.cs" />
+    <Compile Include="GameCondition\GameCondition_UnderWater.cs" />
+    <Compile Include="GameCondition\UnderWaterGameConditionDef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
