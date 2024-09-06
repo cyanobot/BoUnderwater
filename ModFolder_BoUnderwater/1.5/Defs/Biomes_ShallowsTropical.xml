@@ -6,13 +6,14 @@
     	<description>bla bla bla</description>
     	<workerClass>BiomesKit.UniversalBiomeWorker</workerClass> <!-- This is the important bit here. -->
 		<modExtensions>
-      		<li Class="BiomesKit.BiomesKitControls">
-				<allowOnLand>false</allowOnLand>
-				<allowOnWater>true</allowOnWater>
-				<spawnHills>LargeHills</spawnHills>
-				<frequency>50</frequency>
-				<!-- <minElevation>2</minElevation>
-				<usePerlin>true</usePerlin> -->
+			<li Class="BiomesCore.DefModExtensions.BiomesMap">
+        		<isIsland>true</isIsland>
+				<islandShapes>
+					<li>Smooth</li>
+					<li>Rough</li>
+				</islandShapes>
+        		<allowBeach>false</allowBeach>
+				<hasScatterables>false</hasScatterables>	
 			</li>
 			<li Class="BiomesCore.DefModExtensions.BiomesMap">
 				<seasonalTemperatureShift>0.2</seasonalTemperatureShift>
@@ -94,7 +95,7 @@
 		</diseases>
 		<terrainPatchMakers>
       		<li>
-       	 		<perlinFrequency>0.055</perlinFrequency>
+       	 		<perlinFrequency>0.015</perlinFrequency>
         		<thresholds>
           			<li>
             			<terrain>FineSand</terrain>
