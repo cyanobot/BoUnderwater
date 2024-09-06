@@ -16,8 +16,8 @@
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>SoftSand</defName>
     <label>soft sand</label>
-    <texturePath>Terrain/Surfaces/SoftSand</texturePath>
-    <pollutedTexturePath>Terrain/Surfaces/SoftSand</pollutedTexturePath>
+    <texturePath>World/Biomes/SoftSand</texturePath>
+    <pollutedTexturePath>World/Biomes/SoftSand</pollutedTexturePath>
     <edgeType>FadeRough</edgeType>
     <categoryType>Soil</categoryType>
     <renderPrecedence>340</renderPrecedence>
@@ -56,9 +56,9 @@
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>YellowGrass</defName>
     <label>lichen-covered soil</label>
-    <texturePath>Terrain/Surfaces/YellowGrass</texturePath>
-    <pollutedTexturePath>Terrain/Surfaces/YellowGrass</pollutedTexturePath>
-    <pollutionOverlayTexturePath>Terrain/Surfaces/PollutionMossy</pollutionOverlayTexturePath>
+    <texturePath>World/Biomes/YellowGrass</texturePath>
+    <pollutedTexturePath>World/Biomes/YellowGrass</pollutedTexturePath>
+    <pollutionOverlayTexturePath>World/Biomes/YellowGrass</pollutionOverlayTexturePath>
     <pollutionShaderType MayRequire="Ludeon.RimWorld.Biotech">TerrainFadeRoughSoftLight</pollutionShaderType>
     <pollutionOverlayScale>(0.66, 0.66)</pollutionOverlayScale>
     <pollutionColor>(1, 1, 1, 1)</pollutionColor>
