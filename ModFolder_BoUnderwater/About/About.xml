@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>Under Water Biome</name>
-	<author>Lee</author>
+	<author>Bo</author>
 	<supportedVersions>
 		<li>1.4</li>
 		<li>1.5</li>
 	</supportedVersions>
-	<packageId>lee.jujustu.kaisen</packageId>
-	<description>A little mod that uses Biotechs Gene system to add Sukuna's and Gojo's abilities. Included are Fire Arrow, Cleave, Dismantle. Gojo's are Red, Blue, and Hollow Purple.</description>
+	<packageId>bo.underwater.biome</packageId>
+	<description>An underwater biome.</description>
 	<modDependencies>
 		<li>
 			<packageId>Ludeon.RimWorld.Biotech</packageId>
