@@ -11,6 +11,7 @@
 				<islandShapes>
 					<li>Smooth</li>
 					<li>Rough</li>
+					<li>Crescent</li>
 				</islandShapes>
         		<allowBeach>false</allowBeach>
 				<hasScatterables>false</hasScatterables>	
