@@ -10,6 +10,7 @@
 				<allowOnLand>false</allowOnLand>
 				<allowOnWater>true</allowOnWater>
 				<spawnHills>LargeHills</spawnHills>
+				<frequency>50</frequency>
 				<!-- <minElevation>2</minElevation>
 				<usePerlin>true</usePerlin> -->
 			</li>
@@ -103,6 +104,11 @@
 				<max>999</max>
 			</li>
 		</terrainsByFertility>
+		<baseWeatherCommonalities>
+      		<Clear>18</Clear>
+      		<DryThunderstorm>1</DryThunderstorm>
+      		<GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
+    </baseWeatherCommonalities>
 		<wildPlants>
 			<UB_Plant_SeaGrass>4.5</UB_Plant_SeaGrass>
 			<UB_Plant_Demosponge>1.6</UB_Plant_Demosponge>
