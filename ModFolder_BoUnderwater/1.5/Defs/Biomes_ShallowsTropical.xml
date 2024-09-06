@@ -109,7 +109,7 @@
 			<UB_Plant_SeaLily>0.5</UB_Plant_SeaLily>
 			<UB_Plant_ShelfCoral>0.8</UB_Plant_ShelfCoral>
 			<UB_Plant_Anemone>0.8</UB_Plant_Anemone>
-			<UB_Plant_Demosponge>1.0</Plant_Demosponge>
+			<UB_Plant_Demosponge>1.0</UB_Plant_Demospongege>
 		</wildPlants>
 	</BiomeDef>
 </Defs>
