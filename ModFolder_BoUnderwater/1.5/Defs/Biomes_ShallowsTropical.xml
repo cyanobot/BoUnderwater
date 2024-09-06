@@ -71,7 +71,7 @@
 		<foragedFood>RawBerries</foragedFood>
 		<wildPlantRegrowDays>20</wildPlantRegrowDays>
 		<soundsAmbient>
-			<li>TropicalShallowsMap</li>
+			<li>Ambient_NightInsects_Standard</li>
 		</soundsAmbient>
 		<diseases>
 			<li>
