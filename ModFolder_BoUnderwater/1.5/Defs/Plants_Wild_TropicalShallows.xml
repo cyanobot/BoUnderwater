@@ -81,6 +81,24 @@
     </plant>
   </ThingDef>
 
+  <ThingDef ParentName="BushBase">
+    <defName>UB_Plant_Anemone</defName>
+    <label>bush</label>
+    <description>A short shrub. Does not typically talk.</description>
+    <graphicData>
+      <texPath>Things/Plant/Anemone</texPath>
+      <drawSize>1.15</drawSize>
+      <shadowData>
+        <volume>(0.55, 0.2, 0.2)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconScale>0.85</uiIconScale>
+    <plant>
+      <growDays>3</growDays>
+      <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>
+    </plant>
+  </ThingDef>
+
   <ThingDef ParentName="PlantBase">
     <defName>UB_Plant_ShelfCoral</defName>
     <label>brambles</label>
