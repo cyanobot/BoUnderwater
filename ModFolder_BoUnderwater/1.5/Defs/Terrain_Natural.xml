@@ -14,10 +14,10 @@
   <!-- Standard soils -->
 
   <TerrainDef ParentName="NaturalTerrainBase">
-    <defName>SoftSand</defName>
+    <defName>FineSand</defName>
     <label>soft sand</label>
-    <texturePath>World/Biomes/SoftSand</texturePath>
-    <pollutedTexturePath>World/Biomes/SoftSand</pollutedTexturePath>
+    <texturePath>World/Biomes/FineSand</texturePath>
+    <pollutedTexturePath>World/Biomes/FineSand</pollutedTexturePath>
     <edgeType>FadeRough</edgeType>
     <categoryType>Soil</categoryType>
     <renderPrecedence>340</renderPrecedence>
