@@ -6,7 +6,7 @@
     	<description>bla bla bla</description>
     	<workerClass>BiomesKit.UniversalBiomeWorker</workerClass> <!-- This is the important bit here. -->
 		<modExtensions>
-      				<li Class="BiomesKit.BiomesKitControls">
+      		<li Class="BiomesKit.BiomesKitControls">
 				<allowOnLand>false</allowOnLand>
 				<allowOnWater>true</allowOnWater>
 				<spawnHills>LargeHills</spawnHills>
