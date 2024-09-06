@@ -94,21 +94,21 @@
 		</diseases>
 		<terrainPatchMakers>
       		<li>
-       	 		<perlinFrequency>0.015</perlinFrequency>
+       	 		<perlinFrequency>0.055</perlinFrequency>
         		<thresholds>
           			<li>
-            		<terrain>FineSand</terrain>
-            		<min>0.73</min>
-            	<max>0.80</max>
-          	</li>
-          	<li>
-            	<terrain>YellowGrass</terrain>
-            	<min>0.80</min>
-            	<max>0.93</max>
-          </li>
-        </thresholds>
-      </li>
-    </terrainPatchMakers>
+            			<terrain>FineSand</terrain>
+            			<min>0.73</min>
+            			<max>0.90</max>
+          			</li>
+          			<li>
+            			<terrain>YellowGrass</terrain>
+            			<min>0.80</min>
+            			<max>0.93</max>
+          			</li>
+    			</thresholds>
+      		</li>
+    	</terrainPatchMakers>
 		<terrainsByFertility> <!-- REPLACE section-->
 			<li>
 				<terrain>FineSand</terrain>
