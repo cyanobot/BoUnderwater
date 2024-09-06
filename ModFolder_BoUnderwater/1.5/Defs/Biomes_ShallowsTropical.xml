@@ -111,7 +111,7 @@
     </terrainPatchMakers>
 		<terrainsByFertility> <!-- REPLACE section-->
 			<li>
-				<terrain>SoftSand</terrain>
+				<terrain>FineSand</terrain>
 				<min>-999</min>
 				<max>999</max>
 			</li>
