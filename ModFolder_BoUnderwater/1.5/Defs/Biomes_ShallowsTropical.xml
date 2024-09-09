@@ -4,19 +4,18 @@
     	<defName>UB_ShallowsTropical</defName>
     	<label>Tropical Shallows</label>
     	<description>bla bla bla</description>
-    	<workerClass>BiomesKit.UniversalBiomeWorker</workerClass> <!-- This is the important bit here. -->
-		<modExtensions>
+      <workerClass>BoUnderwater.BiomeWorker_UnderwaterIslands</workerClass>
+			<modExtensions>
 			<li Class="BiomesCore.DefModExtensions.BiomesMap">
-        		<isIsland>true</isIsland>
-				<islandShapes>
-					<li>Smooth</li>
-					<li>Rough</li>
-					<li>Crescent</li>
-				</islandShapes>
-        		<allowBeach>false</allowBeach>
-				<hasScatterables>false</hasScatterables>	
-			</li>
-			<li Class="BiomesCore.DefModExtensions.BiomesMap">
+				<isIsland>true</isIsland>
+			 <islandShapes>
+				 <li>Smooth</li>
+				 <li>Rough</li>
+				 <li>Crescent</li>
+				 <li>Pair</li>
+			 </islandShapes>
+			<allowBeach>false</allowBeach>
+			 <hasScatterables>true</hasScatterables>
 				<seasonalTemperatureShift>0.2</seasonalTemperatureShift>
 				<disallowedWeathers>
 					<li>DryThunderstorm</li>
