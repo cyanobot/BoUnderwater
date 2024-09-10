@@ -54,7 +54,7 @@
       <maxMeshCount>9</maxMeshCount>
       <visualSizeRange>0.7~0.85</visualSizeRange>
       <topWindExposure>0.4</topWindExposure>
-      <wildClusterRadius>4</wildClusterRadius>
+      <wildClusterRadius>10</wildClusterRadius>
       <wildClusterWeight>10</wildClusterWeight>
       <wildOrder>1</wildOrder>
       <pollutedGraphicPath>Things/Plant/SeaLily</pollutedGraphicPath>
@@ -93,16 +93,13 @@
       </shadowData>
     </graphicData>
     <uiIconScale>0.85</uiIconScale>
-    <Operation Class="PatchOperationAddModExtension">
-      <xpath>/Defs/TerrainDef[defName = "WaterShallow"]</xpath>
-          <value>
-          <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
-            <terrainTags>
-            <li>YellowGrass</li>
+     <modExtensions>
+        <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
+          <terrainTags>
+            <li>YellowSeaGrass</li>
           </terrainTags>
         </li>
-  </value>
-</Operation>
+    </modExtensions>
     <plant>
       <growDays>3</growDays>
       <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>

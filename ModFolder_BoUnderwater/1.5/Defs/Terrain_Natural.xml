@@ -15,7 +15,7 @@
 
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>FineSand</defName>
-    <label>soft sand</label>
+    <label>fine sand</label>
     <texturePath>World/Biomes/FineSand</texturePath>
     <pollutedTexturePath>World/Biomes/FineSand</pollutedTexturePath>
     <edgeType>FadeRough</edgeType>
@@ -55,7 +55,7 @@
 
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>YellowGrass</defName>
-    <label>covered by yellow seagrass</label>
+    <label>yellow seagrass</label>
     <texturePath>World/Biomes/YellowGrass</texturePath>
     <pollutedTexturePath>World/Biomes/YellowGrass</pollutedTexturePath>
     <pollutionOverlayTexturePath>World/Biomes/YellowGrass</pollutionOverlayTexturePath>
@@ -85,6 +85,17 @@
     <tags>
       <li>Soil</li>
     </tags>
+     <!-- Terrain control -->
+    <Operation Class="PatchOperationAddModExtension">
+  <xpath>/Defs/TerrainDef[defName = "YellowGrass"]</xpath>
+  <value>
+  <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
+    <terrainTags>
+      <li>YellowSeaGrass</li>
+    </terrainTags>
+  </li>
+  </value>
+</Operation>
   </TerrainDef>
 
 
