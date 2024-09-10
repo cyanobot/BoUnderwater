@@ -83,8 +83,17 @@
     <takeFootprints>True</takeFootprints>
     <avoidWander>false</avoidWander>
     <tags>
-      <li>Soil</li>
+      <li>YellowGrass</li>
+      <li>AnemoneGrowth</li>
     </tags>
+    <modExtensions>
+      <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
+        <terrainTags>
+          <li>YellowGrass</li>
+          <li>AnemoneGrowth</li>
+        </terrainTags>
+      </li>
+    </modExtensions>
   </TerrainDef>
 
 

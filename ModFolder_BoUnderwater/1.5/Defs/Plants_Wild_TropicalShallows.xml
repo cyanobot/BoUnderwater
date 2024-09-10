@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	
+
   <!--====================================== Carpets ======================================== -->
 
   <ThingDef ParentName="PlantBase">
@@ -60,7 +60,7 @@
       <pollutedGraphicPath>Things/Plant/SeaLily</pollutedGraphicPath>
     </plant>
   </ThingDef>
-  
+
   <!--====================================== Bushes ======================================== -->
 
   <ThingDef ParentName="BushBase">
@@ -92,22 +92,23 @@
         <volume>(0.55, 0.2, 0.2)</volume>
       </shadowData>
     </graphicData>
-   <ingestible>
-     <preferability>NeverForNutrition</preferability>
-   </ingestible>
+	   <ingestible>
+	     <preferability>NeverForNutrition</preferability>
+	   </ingestible>
     <uiIconScale>0.85</uiIconScale>
      <modExtensions>
         <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
           <terrainTags>
-            <li>Soil</li>
+						<li>YellowGrass</li>
+			      <li>AnemoneGrowth</li>
           </terrainTags>
         </li>
     </modExtensions>
     <plant>
       <growDays>3</growDays>
       <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>
-      <wildClusterRadius>15</wildClusterRadius>
-      <wildClusterWeight>200</wildClusterWeight>
+      <wildClusterRadius>5</wildClusterRadius>
+      <wildClusterWeight>20</wildClusterWeight>
     </plant>
   </ThingDef>
 
@@ -136,7 +137,7 @@
       <visualSizeRange>0.7~0.85</visualSizeRange>
       <topWindExposure>0.15</topWindExposure>
       <wildClusterRadius>4</wildClusterRadius>
-      <wildClusterWeight>200</wildClusterWeight>
+      <wildClusterWeight>20</wildClusterWeight>
       <wildOrder>1</wildOrder>
       <wildEqualLocalDistribution>false</wildEqualLocalDistribution>
       <pollution>Any</pollution>
