@@ -81,7 +81,7 @@
     </plant>
   </ThingDef>
 
-  <ThingDef ParentName="BushBase">
+  <ThingDef ParentName="PlantBase">
     <defName>UB_Plant_Anemone</defName>
     <label>bush</label>
     <description>A short shrub. Does not typically talk.</description>
@@ -93,9 +93,21 @@
       </shadowData>
     </graphicData>
     <uiIconScale>0.85</uiIconScale>
+    <Operation Class="PatchOperationAddModExtension">
+      <xpath>/Defs/TerrainDef[defName = "WaterShallow"]</xpath>
+          <value>
+          <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
+            <terrainTags>
+            <li>YellowGrass</li>
+          </terrainTags>
+        </li>
+  </value>
+</Operation>
     <plant>
       <growDays>3</growDays>
       <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>
+      <wildClusterRadius>15</wildClusterRadius>
+      <wildClusterWeight>200</wildClusterWeight>
     </plant>
   </ThingDef>
 

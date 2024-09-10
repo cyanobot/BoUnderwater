@@ -8,12 +8,6 @@
 			<modExtensions>
 			<li Class="BiomesCore.DefModExtensions.BiomesMap">
 				<isIsland>true</isIsland>
-			 <islandShapes>
-				 <li>Smooth</li>
-				 <li>Rough</li>
-				 <li>Crescent</li>
-				 <li>Pair</li>
-			 </islandShapes>
 			<allowBeach>false</allowBeach>
 			 <hasScatterables>true</hasScatterables>
 				<seasonalTemperatureShift>0.2</seasonalTemperatureShift>

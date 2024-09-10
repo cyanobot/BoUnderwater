@@ -55,7 +55,7 @@
 
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>YellowGrass</defName>
-    <label>lichen-covered soil</label>
+    <label>covered by yellow seagrass</label>
     <texturePath>World/Biomes/YellowGrass</texturePath>
     <pollutedTexturePath>World/Biomes/YellowGrass</pollutedTexturePath>
     <pollutionOverlayTexturePath>World/Biomes/YellowGrass</pollutionOverlayTexturePath>
