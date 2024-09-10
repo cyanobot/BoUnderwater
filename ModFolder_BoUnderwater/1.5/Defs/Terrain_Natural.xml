@@ -85,17 +85,6 @@
     <tags>
       <li>Soil</li>
     </tags>
-     <!-- Terrain control -->
-    <Operation Class="PatchOperationAddModExtension">
-  <xpath>/Defs/TerrainDef[defName = "YellowGrass"]</xpath>
-  <value>
-  <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
-    <terrainTags>
-      <li>YellowSeaGrass</li>
-    </terrainTags>
-  </li>
-  </value>
-</Operation>
   </TerrainDef>
 
 

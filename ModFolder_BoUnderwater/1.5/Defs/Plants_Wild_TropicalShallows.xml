@@ -92,11 +92,14 @@
         <volume>(0.55, 0.2, 0.2)</volume>
       </shadowData>
     </graphicData>
+   <ingestible>
+     <preferability>NeverForNutrition</preferability>
+   </ingestible>
     <uiIconScale>0.85</uiIconScale>
      <modExtensions>
         <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
           <terrainTags>
-            <li>YellowSeaGrass</li>
+            <li>Soil</li>
           </terrainTags>
         </li>
     </modExtensions>
