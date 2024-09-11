@@ -87,7 +87,7 @@
     <description>A short shrub. Does not typically talk.</description>
     <graphicData>
       <texPath>Things/Plant/Anemone</texPath>
-      <drawSize>1.15</drawSize>
+      <drawSize>2</drawSize>
       <shadowData>
         <volume>(0.55, 0.2, 0.2)</volume>
       </shadowData>
@@ -107,8 +107,8 @@
     <plant>
       <growDays>3</growDays>
       <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>
-      <wildClusterRadius>5</wildClusterRadius>
-      <wildClusterWeight>20</wildClusterWeight>
+      <wildClusterRadius>10</wildClusterRadius>
+      <wildClusterWeight>100</wildClusterWeight>
     </plant>
   </ThingDef>
 
