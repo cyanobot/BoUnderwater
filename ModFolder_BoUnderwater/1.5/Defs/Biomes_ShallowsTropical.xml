@@ -99,6 +99,11 @@
           			<li>
             			<terrain>YellowGrass</terrain>
             			<min>0.10</min>
+            			<max>0.70</max>
+          			</li>
+					<li>
+            			<terrain>PinkGrass</terrain>
+            			<min>0.60</min>
             			<max>0.99</max>
           			</li>
     			</thresholds>
@@ -112,6 +117,11 @@
 			</li>
 			<li>
 				<terrain>YellowGrass</terrain>
+				<min>0.97</min>
+				<max>999</max>
+			</li>
+			<li>
+				<terrain>PinkGrass</terrain>
 				<min>0.97</min>
 				<max>999</max>
 			</li>
