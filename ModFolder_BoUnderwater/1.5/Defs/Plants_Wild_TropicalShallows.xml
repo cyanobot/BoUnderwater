@@ -33,7 +33,7 @@
 
   <ThingDef ParentName="PlantBase">
     <defName>UB_Plant_SeaLily</defName>
-    <label>tall grass</label>
+    <label>sea lily</label>
     <description>Wild tall grass. Slows down anyone moving over it.</description>
     <statBases>
       <MaxHitPoints>90</MaxHitPoints>
@@ -59,6 +59,13 @@
       <wildOrder>1</wildOrder>
       <pollutedGraphicPath>Things/Plant/SeaLily</pollutedGraphicPath>
     </plant>
+       <modExtensions>
+      <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
+        <terrainTags>
+          <li>PinkGrass</li>
+        </terrainTags>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <!--====================================== Bushes ======================================== -->
@@ -87,7 +94,7 @@
     <description>A short shrub. Does not typically talk.</description>
     <graphicData>
       <texPath>Things/Plant/Anemone</texPath>
-      <drawSize>1.15</drawSize>
+      <drawSize>2</drawSize>
       <shadowData>
         <volume>(0.55, 0.2, 0.2)</volume>
       </shadowData>
@@ -110,8 +117,8 @@
       <fertilitySensitivity>0</fertilitySensitivity>
       <growDays>3</growDays>
       <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>
-      <wildClusterRadius>5</wildClusterRadius>
-      <wildClusterWeight>20</wildClusterWeight>
+      <wildClusterRadius>10</wildClusterRadius>
+      <wildClusterWeight>100</wildClusterWeight>
     </plant>
   </ThingDef>
 
