@@ -84,8 +84,10 @@
     <Compile Include="Comps\CompProperties_ProximityComp.cs" />
     <Compile Include="Comps\CompProperties_Proximity_ShowMote.cs" />
     <Compile Include="GameCondition\BiomeWorker_UnderwaterIslands.cs" />
+    <Compile Include="Terrain Modifications\TerrainDefModifier.cs" />
+    <Compile Include="Terrain Modifications\ConditionalFertilityExtension.cs" />
     <Compile Include="GameCondition\GameCondition_UnderWater.cs" />
-    <Compile Include="GameCondition\PatchClass.cs" />
+    <Compile Include="Patches\PatchClass.cs" />
     <Compile Include="GameCondition\UnderWaterDefOf.cs" />
     <Compile Include="GameCondition\UnderWaterGameConditionDef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

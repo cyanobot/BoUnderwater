@@ -57,6 +57,11 @@
 					<li MayRequire="OskarPotocki.VFE.Insectoid">VFEI_InfestedShipModuleDrop</li>
 				</disabledIncidents>
 			</li>
+			<li Class="BoUnderwater.ConditionalFertilityExtension">
+				<stoneFertilityOverride>0.2</stoneFertilityOverride>
+				<applicableBiomes>
+				</applicableBiomes>
+			</li>
 		</modExtensions>
 		<animalDensity>2.5</animalDensity>
 		<plantDensity>0.40</plantDensity>
@@ -91,6 +96,11 @@
       		<li>
        	 		<perlinFrequency>0.015</perlinFrequency>
         		<thresholds>
+							<li>
+								<terrain>Marble_Rough</terrain>
+								<min>0.01</min>
+								<max>0.20</max>
+							</li>
           			<li>
             			<terrain>FineSand</terrain>
             			<min>0.01</min>

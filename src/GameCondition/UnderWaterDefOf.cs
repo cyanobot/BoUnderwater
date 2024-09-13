@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using Verse;
 
 namespace BoUnderwater
 {
@@ -8,6 +9,8 @@ namespace BoUnderwater
 
         public static UnderWaterGameConditionDef UnderWaterEnvironment;
         public static BiomeDef UB_ShallowsTropical;
+
+        public static ThingDef UB_Plant_Anemone;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         static UnderWaterDefOf()

@@ -101,10 +101,13 @@
           <terrainTags>
 						<li>YellowGrass</li>
 			      <li>AnemoneGrowth</li>
+            <li>IGrowOnStone</li>
           </terrainTags>
         </li>
     </modExtensions>
     <plant>
+      <fertilityMin>0</fertilityMin>
+      <fertilitySensitivity>0</fertilitySensitivity>
       <growDays>3</growDays>
       <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>
       <wildClusterRadius>5</wildClusterRadius>
