@@ -96,46 +96,5 @@
     </modExtensions>
   </TerrainDef>
 
-<TerrainDef ParentName="NaturalTerrainBase">
-    <defName>PinkGrass</defName>
-    <label>pink seagrass</label>
-    <texturePath>World/Biomes/PinkGrass</texturePath>
-    <pollutedTexturePath>World/Biomes/YellowGrass</pollutedTexturePath>
-    <pollutionOverlayTexturePath>World/Biomes/YellowGrass</pollutionOverlayTexturePath>
-    <pollutionShaderType MayRequire="Ludeon.RimWorld.Biotech">TerrainFadeRoughSoftLight</pollutionShaderType>
-    <pollutionOverlayScale>(0.66, 0.66)</pollutionOverlayScale>
-    <pollutionColor>(1, 1, 1, 1)</pollutionColor>
-    <edgeType>FadeRough</edgeType>
-    <categoryType>Soil</categoryType>
-    <renderPrecedence>315</renderPrecedence>
-    <pathCost>3</pathCost>
-    <statBases>
-      <Beauty>-3</Beauty>
-      <BeautyOutdoors>0</BeautyOutdoors>
-      <Cleanliness>-1</Cleanliness>
-    </statBases>
-    <generatedFilth>Filth_Dirt</generatedFilth>
-    <affordances>
-      <li>Light</li>
-      <li>Medium</li>
-      <li>Heavy</li>
-      <li>GrowSoil</li>
-      <li>Diggable</li>
-    </affordances>
-    <fertility>1</fertility>
-    <takeFootprints>True</takeFootprints>
-    <avoidWander>false</avoidWander>
-    <tags>
-      <li>PinkGrass</li>
-    </tags>
-    <modExtensions>
-      <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
-        <terrainTags>
-          <li>YellowGrass</li>
-          <li>AnemoneGrowth</li>
-        </terrainTags>
-      </li>
-    </modExtensions>
-  </TerrainDef>
 
 </Defs>

@@ -16,81 +16,46 @@ namespace BoUnderwater
 
         private static void ModifyTerrainDefs()
         {
-            Log.Message("BoUnderwater: Starting terrain def modifications");
-            var terrainDefs = DefDatabase<TerrainDef>.AllDefs
-                .Where(def => def.IsNaturalStone());
+            Log.Message("BoUnderwater: Starting terrain def modifications from XML");
 
-            foreach (var terrainDef in terrainDefs)
+            foreach (string TerrainDefName in UnderWaterDefOf.UnderWaterTerrainModification.TargetTerrainDefNames)
             {
-                Log.Message($"BoUnderwater: Adding ModExtensions to {terrainDef.defName}");
-                if (terrainDef.modExtensions == null)
+                TerrainDef TerrainDef = DefDatabase<TerrainDef>.GetNamed(TerrainDefName, false);
+                if (TerrainDef != null)
                 {
-                    terrainDef.modExtensions = new List<DefModExtension>();
+                    ApplyModifications(TerrainDef, UnderWaterDefOf.UnderWaterTerrainModification);
                 }
-
-                if (!terrainDef.modExtensions.Any(ext => ext is Biomes_PlantControl))
+                else
                 {
-                    terrainDef.modExtensions.Add(new Biomes_PlantControl
-                    {
-                        terrainTags = new List<string> { "IGrowOnStone" }
-                    });
-                }
-
-                if (!terrainDef.modExtensions.Any(ext => ext is ConditionalFertilityExtension))
-                {
-                    terrainDef.modExtensions.Add(new ConditionalFertilityExtension
-                    {
-                        stoneFertilityOverride = 0.1f,
-                        applicableBiomes = new List<BiomeDef> { UnderWaterDefOf.UB_ShallowsTropical }
-                    });
+                    //Log.Error($"BoUnderwater: TerrainDef {TerrainDefName} not found for modification");
                 }
             }
-            Log.Message("BoUnderwater: Finished terrain def modifications");
+
+            Log.Message("BoUnderwater: Finished terrain def modifications from XML");
+        }
+
+        private static void ApplyModifications(TerrainDef TerrainDef, TerrainModificationDef ModDef)
+        {
+            Log.Message($"BoUnderwater: Applying modifications to {TerrainDef.defName}");
+
+            if (TerrainDef.modExtensions == null)
+            {
+                TerrainDef.modExtensions = new List<DefModExtension>();
+            }
+
+            var StoneExtension = TerrainDef.GetModExtension<NaturalStoneExtension>() ?? new NaturalStoneExtension();
+            StoneExtension.StoneFertilityOverride = ModDef.StoneFertilityOverride;
+            StoneExtension.ApplicableBiomes = ModDef.ApplicableBiomes;
+            TerrainDef.modExtensions.Add(StoneExtension);
         }
     }
 
-    //[HarmonyPatch(typeof(PlantUtility), "CanEverPlantAt",
-    //        new[] { typeof(ThingDef), typeof(IntVec3), typeof(Map), typeof(Thing), typeof(bool), typeof(bool) },
-    //        new[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal })]
-    //public static class Patch_PlantUtility_CanEverPlantAt
-    //{
-    //    public static bool Prefix(ThingDef plantDef, IntVec3 c, Map map, ref Thing blockingThing, bool canWipePlantsExceptTree, bool writeNoReason, ref AcceptanceReport __result)
-    //    {
-    //        if (map.Biome != UnderWaterDefOf.UB_ShallowsTropical)
-    //        {
-    //            return true;
-    //        }
-
-    //        if (plantDef == UnderWaterDefOf.UB_Plant_Anemone)
-    //        {
-    //            TerrainDef terrain = map.terrainGrid.TerrainAt(c);
-    //            if (IsSpecialStonePlant(plantDef))
-    //            {
-    //                if (terrain != null && (terrain.defName.EndsWith("_Rough") || terrain.defName.EndsWith("_Smooth") || terrain.defName.EndsWith("_RoughHewn")))
-    //                {
-    //                    // Check for ConditionalFertilityExtension and apply fertility if applicable
-    //                    var fertilityExt = terrain.GetModExtension<ConditionalFertilityExtension>();
-    //                    if (fertilityExt != null && fertilityExt.applicableBiomes.Contains(map.Biome))
-    //                    {
-    //                       // Log.Message($"BoUnderwater: Modifying terrain def fertility to {fertilityExt.fertility}");
-    //                        //terrain.fertility = fertilityExt.fertility;
-    //                    }
-
-    //                    Log.Message($"Allowing {plantDef.defName} on {terrain.defName}");
-    //                    __result = AcceptanceReport.WasAccepted;
-    //                    return false;
-    //                }
-    //            }
-    //        }
-    //        return true;
-    //    }
-
-    //    private static bool IsSpecialStonePlant(ThingDef plantDef)
-    //    {
-    //        return plantDef == UnderWaterDefOf.UB_Plant_Anemone;
-    //    }
-    //}
-
-
+    public class TerrainModificationDef : Def
+    {
+        public List<string> TargetTerrainDefNames;
+        public List<string> TerrainTags;
+        public float StoneFertilityOverride;
+        public List<BiomeDef> ApplicableBiomes;
+    }
 
 }

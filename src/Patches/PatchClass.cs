@@ -43,7 +43,7 @@ namespace BoUnderwater
                         GameCondition condition = GameConditionMaker.MakeConditionPermanent(conditionToActivate);
                         map.gameConditionManager.RegisterCondition(condition);
 
-                        Log.Message($"Activated {conditionToActivate.defName} in {targetBiome.defName}");
+                        //Log.Message($"Activated {conditionToActivate.defName} in {targetBiome.defName}");
                     }
                 }
             }
@@ -91,131 +91,6 @@ namespace BoUnderwater
             }
         }
     }
-    #endregion
-
-    #region TERRAIN
-
-
-    //override can plant logic, if in biome that has mod extension, and terrain in question is natural stone, then check if plant has IGrowOnStone terrain tag.
-    [HarmonyPatch(typeof(PlantUtility), nameof(PlantUtility.CanEverPlantAt),
-    new[] { typeof(ThingDef), typeof(IntVec3), typeof(Map), typeof(Thing), typeof(bool), typeof(bool) },
-    new[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal })]
-    public static class Patch_PlantUtility_CanEverPlantAt
-    {
-        public static bool Prefix(ThingDef plantDef, IntVec3 c, Map map, ref Thing blockingThing, bool canWipePlantsExceptTree, bool writeNoReason, ref AcceptanceReport __result)
-        {
-            TerrainDef terrain = map.terrainGrid.TerrainAt(c);
-            ConditionalFertilityExtension fertilityExt = map.Biome.GetModExtension<ConditionalFertilityExtension>();
-
-            if (fertilityExt == null)
-            {
-                return true; 
-            }
-
-            //Log.Message("BoUnderwater: Biome has ConditionalFertilityExtension ModExtension.");
-
-            bool isStoneOrUnderwaterTerrain = terrain != null && terrain.IsNaturalStone();
-
-            if (isStoneOrUnderwaterTerrain)
-            {
-                Log.Message("BoUnderwater: isStoneOrUnderwaterTerrain");
-                if (plantDef == UnderWaterDefOf.UB_Plant_Anemone)
-                {
-                    Log.Message($"BoUnderwater: IsAllowedUnderwaterPlant {plantDef.defName}");
-                    __result = AcceptanceReport.WasAccepted;
-                    return false;
-                }
-                else
-                {
-                    Log.Message($"BoUnderwater: cannt grow on stone {plantDef.defName}");
-                    __result = new AcceptanceReport("CannotGrowOnStone".Translate());
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private static bool IsAllowedUnderwaterPlant(ThingDef plantDef)
-        {
-            Biomes_PlantControl plantControl = plantDef.GetModExtension<Biomes_PlantControl>();
-            if (plantControl != null)
-            {
-                return plantControl.terrainTags != null && plantControl.terrainTags.Contains("IGrowOnStone");
-            }
-            return false;
-        }
-
-        //not good very bad
-        public static bool IsNaturalStone(this TerrainDef thingDef)
-        {
-            return thingDef.defName.EndsWith("_Rough") || thingDef.defName.EndsWith("_Smooth") || thingDef.defName.EndsWith("_RoughHewn");
-        }
-
-    }
-
-    //override fertility calculation depending on maps biome, probably best way
-    [HarmonyPatch(typeof(FertilityGrid), "CalculateFertilityAt")]
-    public static class Patch_FertilityGrid_CalculateFertilityAt
-    {
-        public static void Postfix(IntVec3 loc, Map ___map, ref float __result)
-        {
-            if (___map.Biome == UnderWaterDefOf.UB_ShallowsTropical)
-            {
-                TerrainDef terrain = ___map.terrainGrid.TerrainAt(loc);
-
-                var fertilityExt = terrain.GetModExtension<ConditionalFertilityExtension>();
-                if (fertilityExt != null && fertilityExt.applicableBiomes.Contains(___map.Biome))
-                {
-                    Log.Message($"Conditionally changing terrain def fertility value to {fertilityExt.stoneFertilityOverride} on {terrain.defName}, because it is specified in a Conditional FertilityExtension");
-                    __result = fertilityExt.stoneFertilityOverride;
-                }
-            }
-        }
-    }
-
-    //[HarmonyPatch(typeof(PlantUtility), "CanEverPlantAt",
-    //        new[] { typeof(ThingDef), typeof(IntVec3), typeof(Map), typeof(Thing), typeof(bool), typeof(bool) },
-    //        new[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal })]
-    //public static class Patch_PlantUtility_CanEverPlantAt
-    //{
-    //    public static bool Prefix(ThingDef plantDef, IntVec3 c, Map map, ref Thing blockingThing, bool canWipePlantsExceptTree, bool writeNoReason, ref AcceptanceReport __result)
-    //    {
-    //        if (map.Biome != UnderWaterDefOf.UB_ShallowsTropical)
-    //        {
-    //            return true;
-    //        }
-
-    //        if (plantDef == UnderWaterDefOf.UB_Plant_Anemone)
-    //        {
-    //            TerrainDef terrain = map.terrainGrid.TerrainAt(c);
-    //            if (IsSpecialStonePlant(plantDef))
-    //            {
-    //                if (terrain != null && (terrain.defName.EndsWith("_Rough") || terrain.defName.EndsWith("_Smooth") || terrain.defName.EndsWith("_RoughHewn")))
-    //                {
-    //                    // Check for ConditionalFertilityExtension and apply fertility if applicable
-    //                    var fertilityExt = terrain.GetModExtension<ConditionalFertilityExtension>();
-    //                    if (fertilityExt != null && fertilityExt.applicableBiomes.Contains(map.Biome))
-    //                    {
-    //                       // Log.Message($"BoUnderwater: Modifying terrain def fertility to {fertilityExt.fertility}");
-    //                        //terrain.fertility = fertilityExt.fertility;
-    //                    }
-
-    //                    Log.Message($"Allowing {plantDef.defName} on {terrain.defName}");
-    //                    __result = AcceptanceReport.WasAccepted;
-    //                    return false;
-    //                }
-    //            }
-    //        }
-    //        return true;
-    //    }
-
-    //    private static bool IsSpecialStonePlant(ThingDef plantDef)
-    //    {
-    //        return plantDef == UnderWaterDefOf.UB_Plant_Anemone;
-    //    }
-    //}
-
 
     #endregion
 }

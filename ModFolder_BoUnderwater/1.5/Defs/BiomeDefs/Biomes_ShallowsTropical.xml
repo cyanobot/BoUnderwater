@@ -8,7 +8,7 @@
 			<modExtensions>
 			<li Class="BiomesCore.DefModExtensions.BiomesMap">
 				<isIsland>true</isIsland>
-			<allowBeach>false</allowBeach>
+				<allowBeach>false</allowBeach>
 			 <hasScatterables>true</hasScatterables>
 				<seasonalTemperatureShift>0.2</seasonalTemperatureShift>
 				<disallowedWeathers>
@@ -56,11 +56,6 @@
 					<li MayRequire="OskarPotocki.VFE.Insectoid">VFEI_InfestedShipPartDrop</li>
 					<li MayRequire="OskarPotocki.VFE.Insectoid">VFEI_InfestedShipModuleDrop</li>
 				</disabledIncidents>
-			</li>
-			<li Class="BoUnderwater.ConditionalFertilityExtension">
-				<stoneFertilityOverride>0.2</stoneFertilityOverride>
-				<applicableBiomes>
-				</applicableBiomes>
 			</li>
 		</modExtensions>
 		<animalDensity>2.5</animalDensity>

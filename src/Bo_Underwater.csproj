@@ -84,8 +84,11 @@
     <Compile Include="Comps\CompProperties_ProximityComp.cs" />
     <Compile Include="Comps\CompProperties_Proximity_ShowMote.cs" />
     <Compile Include="GameCondition\BiomeWorker_UnderwaterIslands.cs" />
+    <Compile Include="Patches\Patch_FertilityGrid_CalculateFertilityAt.cs" />
+    <Compile Include="Patches\Patch_PlantUtility_CanEverPlantAt.cs" />
+    <Compile Include="Terrain Modifications\PlantExtension.cs" />
     <Compile Include="Terrain Modifications\TerrainDefModifier.cs" />
-    <Compile Include="Terrain Modifications\ConditionalFertilityExtension.cs" />
+    <Compile Include="Terrain Modifications\NaturalStoneExtension.cs" />
     <Compile Include="GameCondition\GameCondition_UnderWater.cs" />
     <Compile Include="Patches\PatchClass.cs" />
     <Compile Include="GameCondition\UnderWaterDefOf.cs" />

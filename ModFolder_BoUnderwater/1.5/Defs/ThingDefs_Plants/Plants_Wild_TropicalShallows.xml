@@ -19,7 +19,7 @@
     <hideAtSnowDepth>0.5</hideAtSnowDepth>
     <ingestible />
     <plant>
-      <fertilityMin>0.05</fertilityMin>
+      <fertilityMin>0.11</fertilityMin>
       <fertilitySensitivity>0.3</fertilitySensitivity>
       <growDays>2.5</growDays>
       <leaflessGraphicPath>Things/Plant/SeaGrass</leaflessGraphicPath>
@@ -33,7 +33,7 @@
 
   <ThingDef ParentName="PlantBase">
     <defName>UB_Plant_SeaLily</defName>
-    <label>sea lily</label>
+    <label>tall grass</label>
     <description>Wild tall grass. Slows down anyone moving over it.</description>
     <statBases>
       <MaxHitPoints>90</MaxHitPoints>
@@ -59,13 +59,6 @@
       <wildOrder>1</wildOrder>
       <pollutedGraphicPath>Things/Plant/SeaLily</pollutedGraphicPath>
     </plant>
-       <modExtensions>
-      <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
-        <terrainTags>
-          <li>PinkGrass</li>
-        </terrainTags>
-      </li>
-    </modExtensions>
   </ThingDef>
 
   <!--====================================== Bushes ======================================== -->
@@ -94,7 +87,7 @@
     <description>A short shrub. Does not typically talk.</description>
     <graphicData>
       <texPath>Things/Plant/Anemone</texPath>
-      <drawSize>2</drawSize>
+      <drawSize>1.15</drawSize>
       <shadowData>
         <volume>(0.55, 0.2, 0.2)</volume>
       </shadowData>
@@ -108,7 +101,6 @@
           <terrainTags>
 						<li>YellowGrass</li>
 			      <li>AnemoneGrowth</li>
-            <li>IGrowOnStone</li>
           </terrainTags>
         </li>
     </modExtensions>
@@ -117,8 +109,8 @@
       <fertilitySensitivity>0</fertilitySensitivity>
       <growDays>3</growDays>
       <leaflessGraphicPath>Things/Plant/Anemone</leaflessGraphicPath>
-      <wildClusterRadius>10</wildClusterRadius>
-      <wildClusterWeight>100</wildClusterWeight>
+      <wildClusterRadius>5</wildClusterRadius>
+      <wildClusterWeight>20</wildClusterWeight>
     </plant>
   </ThingDef>
 
@@ -137,6 +129,14 @@
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <ingestible />
+    <modExtensions>
+       <li Class="BoUnderwater.PlantExtension">
+         <CanGrowOnStone>true</CanGrowOnStone>
+         <ApplicableBiomes>
+           <li>UB_ShallowsTropical</li>
+         </ApplicableBiomes>
+       </li>
+   </modExtensions>
     <plant>
       <fertilitySensitivity>0.7</fertilitySensitivity>
       <growDays>3</growDays>
