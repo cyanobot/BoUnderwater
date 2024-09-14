@@ -133,18 +133,30 @@ namespace BoUnderwater
 
         public void UpdateZoom()
         {
+
+            float scaleAtMaxZoom = 10f;
             float baseScale = 4f;
-            float minZoom = 10f;
-            float maxZoom = 60f;
+    
 
             // Get the current zoom value
-            float currentZoom = Find.CameraDriver.ZoomRootSize;
-
-            float normalizedZoom = Mathf.InverseLerp(minZoom, maxZoom, currentZoom);
+  
             // Calculate the final zoom scale
-            float zoomScale = Mathf.Lerp(baseScale, baseScale * 0.25f, normalizedZoom);
+            float zoomScale = Mathf.Lerp(baseScale, scaleAtMaxZoom, GetZoom());
 
             this.Material.SetFloat("_ZoomScale", zoomScale);
+        }
+
+        private float GetZoom()
+        {
+            float minZoom = 10f;
+            float maxZoom = 60f;
+            float currentZoom = Find.CameraDriver.ZoomRootSize;
+
+
+
+            var Settings = LoadedModManager.GetMod<UnderwaterBiome>().GetSettings<UnderwaterBiomeSettings>();
+            float normalizedZoom = Mathf.InverseLerp(Settings.MinScale, Settings.ScaleAtMaxZoom, currentZoom);
+            return normalizedZoom;
         }
 
         public void UpdateMaterial()
@@ -162,7 +174,7 @@ namespace BoUnderwater
             this.Material.SetFloat("_DistortionStrR", Settings.DistortionStrR);
             this.Material.SetFloat("_DistortionStrG", Settings.DistortionStrG);
             this.Material.SetColor("_Color", Settings.Color);
-            this.Material.SetColor("_node_9748", Color.Lerp(Settings.Color, Settings.Node9748Color, Opact));
+            this.Material.SetColor("_node_9748", Color.Lerp(Settings.Color, Settings.Node9748Color, GetZoom()));
         }
     }
 }
