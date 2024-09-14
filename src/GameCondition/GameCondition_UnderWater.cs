@@ -19,6 +19,10 @@ namespace BoUnderwater
         private float Saturation = 0.75f; // saturation of the sky color (0 = grayscale)
         private float Glow = 1; // strength of any actual light in each cell on the map
 
+        private CausticsOverlay CausticsOverlay;
+
+        private List<SkyOverlay> ConditionOverlays = new List<SkyOverlay>();
+
         public override int TransitionTicks => 120; // how quickly the sky changes color (120 ticks = 2 seconds)
         public override void Init()
         {
@@ -32,6 +36,44 @@ namespace BoUnderwater
             this.OverlayColor = def.OverlayColor;
             this.Saturation = def.SkyColorSaturation;
             this.Glow = def.OverallGlowIntensityMultiplier;
+        }
+        public override void GameConditionTick()
+        {
+            base.GameConditionTick();
+            List<Map> affectedMaps = base.AffectedMaps;
+            foreach (var map in affectedMaps)
+            {
+                foreach (var item in SkyOverlays(map))
+                {
+                    item.TickOverlay(map);
+                }
+            }
+        }
+
+        public override void GameConditionDraw(Map map)
+        {
+            base.GameConditionDraw(map);
+
+            if (map == null)
+            {
+                return;
+            }
+
+            foreach (var item in this.SkyOverlays(map))
+            {
+                item.DrawOverlay(map);
+
+                if (item is CausticsOverlay causticsOverlay)
+                {
+                    causticsOverlay.UpdateZoom();
+                    causticsOverlay.UpdateMaterial();
+                }
+            }
+        }
+
+        public override List<SkyOverlay> SkyOverlays(Map map)
+        {
+            return new List<SkyOverlay>() { new CausticsOverlay() };
         }
 
         public override float SkyTargetLerpFactor(Map map)
@@ -52,6 +94,75 @@ namespace BoUnderwater
         public override SkyTarget? SkyTarget(Map map)
         {
             return new SkyTarget(Glow, TestSkyColors, 1f, 1f);
+        }
+    }
+
+    public class CausticsOverlay : SkyOverlay
+    {
+        public Shader Shader;
+        public Texture2D MainTex;
+        public Texture2D DistortTex;
+        public Material Material;
+
+        private UnderwaterBiomeSettings Settings = null;
+
+        public CausticsOverlay()
+        {
+            this.MainTex = ContentFinder<Texture2D>.Get("Noise8");
+            this.DistortTex = ContentFinder<Texture2D>.Get("DistortionNoise4");
+            this.Shader = (Shader)LoadedModManager.GetMod<UnderwaterBiome>().Content.assetBundles.loadedAssetBundles[0].LoadAsset("causticsshader");
+            this.Material = new Material(this.Shader);
+            this.Material.SetTexture("_MainTex", this.MainTex);
+            this.Material.SetTexture("_DistortMap", this.DistortTex);
+
+
+            this.Material.SetFloat("_Opacity", 0.14f);
+            this.Material.SetFloat("_ScrollSpeed", 0.3f);
+      
+            this.Material.SetFloat("_DistortionSpeed", 0.04f);
+            this.Material.SetFloat("_DistortionStrR", 0.06f);
+            this.Material.SetFloat("_DistortionStrG", 0.06f);
+
+
+            this.Material.SetColor("_Color", new Color(1, 1, 1));
+            this.Material.SetColor("_node_9748", new Color(1, 1,1));
+
+
+            this.worldOverlayMat = this.Material;
+        }
+
+        public void UpdateZoom()
+        {
+            float baseScale = 4f;
+            float minZoom = 10f;
+            float maxZoom = 60f;
+
+            // Get the current zoom value
+            float currentZoom = Find.CameraDriver.ZoomRootSize;
+
+            float normalizedZoom = Mathf.InverseLerp(minZoom, maxZoom, currentZoom);
+            // Calculate the final zoom scale
+            float zoomScale = Mathf.Lerp(baseScale, baseScale * 0.25f, normalizedZoom);
+
+            this.Material.SetFloat("_ZoomScale", zoomScale);
+        }
+
+        public void UpdateMaterial()
+        {
+
+           var Settings = LoadedModManager.GetMod<UnderwaterBiome>().GetSettings<UnderwaterBiomeSettings>();
+
+
+            float Opact = Find.CameraDriver.CurrentZoom == CameraZoomRange.Close | Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest ? 0 : Settings.Opacity;
+
+
+            this.Material.SetFloat("_Opacity", Opact);
+            this.Material.SetFloat("_ScrollSpeed", Settings.ScrollSpeed);
+            this.Material.SetFloat("_DistortionSpeed", Settings.DistortionSpeed);
+            this.Material.SetFloat("_DistortionStrR", Settings.DistortionStrR);
+            this.Material.SetFloat("_DistortionStrG", Settings.DistortionStrG);
+            this.Material.SetColor("_Color", Settings.Color);
+            this.Material.SetColor("_node_9748", Color.Lerp(Settings.Color, Settings.Node9748Color, Opact));
         }
     }
 }

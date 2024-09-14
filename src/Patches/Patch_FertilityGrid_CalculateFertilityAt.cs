@@ -17,7 +17,7 @@ namespace BoUnderwater
                 var stonExtension = terrain.GetModExtension<NaturalStoneExtension>();
                 if (stonExtension != null && stonExtension.IsValidBiome(___map.Biome))
                 {
-                    Log.Message($"Conditionally changing terrain def fertility value to {stonExtension.StoneFertilityOverride} on {terrain.defName}, because it is specified in a Conditional FertilityExtension");
+                    //Log.Message($"Conditionally changing terrain def fertility value to {stonExtension.StoneFertilityOverride} on {terrain.defName}, because it is specified in a Conditional FertilityExtension");
                     __result = stonExtension.StoneFertilityOverride;
                 }
             }
