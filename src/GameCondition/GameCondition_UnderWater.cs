@@ -101,6 +101,7 @@ namespace BoUnderwater
     {
         public Shader Shader;
         public Texture2D MainTex;
+        public Texture2D SecondTex;
         public Texture2D DistortTex;
         public Material Material;
 
@@ -108,11 +109,13 @@ namespace BoUnderwater
 
         public CausticsOverlay()
         {
-            this.MainTex = ContentFinder<Texture2D>.Get("Noise8");
+            this.MainTex = ContentFinder<Texture2D>.Get("Layer1");
+            this.SecondTex = ContentFinder<Texture2D>.Get("Layer2");
             this.DistortTex = ContentFinder<Texture2D>.Get("DistortionNoise4");
             this.Shader = (Shader)LoadedModManager.GetMod<UnderwaterBiome>().Content.assetBundles.loadedAssetBundles[0].LoadAsset("causticsshader");
             this.Material = new Material(this.Shader);
             this.Material.SetTexture("_MainTex", this.MainTex);
+            this.Material.SetTexture("_LayerTwo", this.SecondTex);
             this.Material.SetTexture("_DistortMap", this.DistortTex);
 
 
@@ -125,7 +128,7 @@ namespace BoUnderwater
 
 
             this.Material.SetColor("_Color", new Color(1, 1, 1));
-            this.Material.SetColor("_node_9748", new Color(1, 1,1));
+            this.Material.SetColor("_Color2", new Color(1, 1,1));
 
 
             this.worldOverlayMat = this.Material;
@@ -168,13 +171,41 @@ namespace BoUnderwater
             float Opact = Find.CameraDriver.CurrentZoom == CameraZoomRange.Close | Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest ? 0 : Settings.Opacity;
 
 
-            this.Material.SetFloat("_Opacity", Opact);
-            this.Material.SetFloat("_ScrollSpeed", Settings.ScrollSpeed);
-            this.Material.SetFloat("_DistortionSpeed", Settings.DistortionSpeed);
+            // General settings
+            this.Material.SetFloat("_Opacity", Settings.Opacity);
+            this.Material.SetColor("_Color", Settings.Color);
+            this.Material.SetColor("_ColorTwo", Settings.Color2);
+
+            // Layer One settings
+            this.Material.SetFloat("_LayerOneScrollX", Settings.LayerOneScrollX);
+            this.Material.SetFloat("_LayerOneScrollY", Settings.LayerOneScrollY);
+            this.Material.SetFloat("_LayerOneZoomScale", Settings.LayerOneZoomScale);
+
+            // Layer Two settings
+            this.Material.SetFloat("_LayerTwoSpeedX", Settings.LayerTwoScrollX);
+            this.Material.SetFloat("_LayerTwoSpeedY", Settings.LayerTwiScrollY);
+            this.Material.SetFloat("_LayerTwoZoomScale", Settings.LayerTwiZoomScale);
+
+            // Voronoi settings
+            this.Material.SetFloat("_VoronoiCellDensity", Settings.VoronoiCellDensity);
+            this.Material.SetFloat("_VoronoiSpeed", Settings.VoronoiSpeed);
+            this.Material.SetColor("_VoronoiColor1", Settings.VoronoiColorOne);
+            this.Material.SetColor("_VoronoiColor2", Settings.VoronoiColorTwo);
+            this.Material.SetFloat("_VoronoiMax", Settings.VoronoiMax);
+
+            // Distortion settings
+            this.Material.SetFloat("_EnableDistortion", Settings.EnableDistortion ? 1f : 0f);
+            this.Material.SetFloat("_DistortionSpeedX", Settings.DistortionSpeedX);
+            this.Material.SetFloat("_DistortionSpeedY", Settings.DistortionSpeedY);
             this.Material.SetFloat("_DistortionStrR", Settings.DistortionStrR);
             this.Material.SetFloat("_DistortionStrG", Settings.DistortionStrG);
-            this.Material.SetColor("_Color", Settings.Color);
-            this.Material.SetColor("_node_9748", Color.Lerp(Settings.Color, Settings.Node9748Color, GetZoom()));
+
+            // Scale and zoom settings
+            this.Material.SetFloat("_BaseScale", Settings.BaseScale);
+            this.Material.SetFloat("_MinZoom", Settings.MinZoom);
+            this.Material.SetFloat("_MaxZoom", Settings.MaxZoom);
+            this.Material.SetFloat("_ScaleAtMaxZoom", Settings.ScaleAtMaxZoom);
+            this.Material.SetFloat("_MinScale", Settings.MinScale);
         }
     }
 }
