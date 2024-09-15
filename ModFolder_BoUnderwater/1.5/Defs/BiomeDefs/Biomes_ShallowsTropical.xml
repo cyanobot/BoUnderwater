@@ -96,17 +96,6 @@
     </terrainsByFertility>
     <terrainPatchMakers>
 			<li>
-				<perlinFrequency>0.021</perlinFrequency>
-				
-				<thresholds>
-				<li>
-					<terrain>PinkGrass</terrain>
-					<min>0.3</min>
-					<max>999</max>
-				</li>
-				</thresholds>
-			</li>
-			<li>
         <perlinFrequency>0.023</perlinFrequency>
         
         <thresholds>
