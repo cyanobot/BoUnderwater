@@ -8,6 +8,8 @@ namespace BoUnderwater
         public float Opacity = 0.14f;
         public Color Color = Color.white;
         public Color Color2 = Color.white;
+        public float GlobalScale = 1f;
+
         public float LayerOneScrollX = 0.06f;
         public float LayerOneScrollY = 0.02f;
         public float LayerOneZoomScale = -2.5f;
@@ -24,6 +26,7 @@ namespace BoUnderwater
         public float DistortionSpeedY = 0.01f;
         public float DistortionStrR = 0.06f;
         public float DistortionStrG = 0.06f;
+        public float DistortionScale = 0.1f;
         public float BaseScale = 4f;
         public float MinZoom = 10f;
         public float MaxZoom = 60f;
@@ -35,6 +38,7 @@ namespace BoUnderwater
             Scribe_Values.Look(ref Opacity, "Opacity", 0.14f);
             Scribe_Values.Look(ref Color, "Color", Color.white);
             Scribe_Values.Look(ref Color2, "Color2", Color.white);
+            Scribe_Values.Look(ref GlobalScale, "GlobalScale", 1f);
             Scribe_Values.Look(ref LayerOneScrollX, "LayerOneScrollX", 0.06f);
             Scribe_Values.Look(ref LayerOneScrollY, "LayerOneScrollY", 0.02f);
             Scribe_Values.Look(ref LayerOneZoomScale, "LayerOneZoomScale", -2.5f);
@@ -47,6 +51,7 @@ namespace BoUnderwater
             Scribe_Values.Look(ref VoronoiColorTwo, "VoronoiColorTwo", Color.white);
             Scribe_Values.Look(ref VoronoiMax, "VoronoiMax", 1f);
             Scribe_Values.Look(ref EnableDistortion, "EnableDistortion", false);
+            Scribe_Values.Look(ref DistortionScale, "DistortionScale", 0.1f);
             Scribe_Values.Look(ref DistortionSpeedX, "DistortionSpeedX", 0.01f);
             Scribe_Values.Look(ref DistortionSpeedY, "DistortionSpeedY", 0.01f);
             Scribe_Values.Look(ref DistortionStrR, "DistortionStrR", 0.06f);

@@ -37,6 +37,9 @@ namespace BoUnderwater
             listingStandard.Label("Opacity: " + Settings.Opacity.ToString("F2"));
             Settings.Opacity = listingStandard.Slider(Settings.Opacity, 0f, 1f);
 
+            listingStandard.Label("Global Scale: " + Settings.GlobalScale.ToString("F2"));
+            Settings.GlobalScale = listingStandard.Slider(Settings.GlobalScale, 0f, 1f);
+
             // Layer One settings
             listingStandard.Label("Layer One Scroll X: " + Settings.LayerOneScrollX.ToString("F2"));
             Settings.LayerOneScrollX = listingStandard.Slider(Settings.LayerOneScrollX, -1f, 1f);
@@ -67,13 +70,19 @@ namespace BoUnderwater
             if (Settings.EnableDistortion)
             {
                 listingStandard.Label("Distortion Speed X: " + Settings.DistortionSpeedX.ToString("F2"));
-                Settings.DistortionSpeedX = listingStandard.Slider(Settings.DistortionSpeedX, -0.5f, 0.5f);
+                Settings.DistortionSpeedX = listingStandard.Slider(Settings.DistortionSpeedX, -1f, 1f);
+
                 listingStandard.Label("Distortion Speed Y: " + Settings.DistortionSpeedY.ToString("F2"));
-                Settings.DistortionSpeedY = listingStandard.Slider(Settings.DistortionSpeedY, -0.5f, 0.5f);
+                Settings.DistortionSpeedY = listingStandard.Slider(Settings.DistortionSpeedY, -1f, 1f);
+
                 listingStandard.Label("Distortion Strength R: " + Settings.DistortionStrR.ToString("F2"));
-                Settings.DistortionStrR = listingStandard.Slider(Settings.DistortionStrR, 0f, 0.5f);
+                Settings.DistortionStrR = listingStandard.Slider(Settings.DistortionStrR, 0f, 01f);
+
                 listingStandard.Label("Distortion Strength G: " + Settings.DistortionStrG.ToString("F2"));
-                Settings.DistortionStrG = listingStandard.Slider(Settings.DistortionStrG, 0f, 0.5f);
+                Settings.DistortionStrG = listingStandard.Slider(Settings.DistortionStrG, 0f, 1f);
+
+                listingStandard.Label("Distortion Scale : " + Settings.DistortionScale.ToString("F2"));
+                Settings.DistortionScale = listingStandard.Slider(Settings.DistortionScale, -1f, 1f);
             }
 
             // Scale and zoom settings
@@ -112,6 +121,28 @@ namespace BoUnderwater
             listingStandard.End();
             Widgets.EndScrollView();
             base.DoSettingsWindowContents(inRect);
+        }
+
+        public Shader GetShaderFromAssets(string shaderAssetName)
+        {
+            foreach (var bundle in Content.assetBundles.loadedAssetBundles)
+            {
+                Shader shader = bundle.LoadAsset<Shader>(shaderAssetName);
+                if (shader != null)
+                {
+                    return shader;
+                }
+            }
+
+            Shader fallbackShader = Shader.Find(shaderAssetName);
+            if (fallbackShader != null)
+            {
+                return fallbackShader;
+            }
+
+
+            Debug.LogWarning($"Shader '{shaderAssetName}' not found in any asset bundle or by name.");
+            return ShaderDatabase.DefaultShader;
         }
 
         public override string SettingsCategory()
