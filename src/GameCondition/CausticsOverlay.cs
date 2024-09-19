@@ -101,8 +101,8 @@ namespace BoUnderwater
             this.Material.SetFloat("_GlobalScale", Settings.GlobalScale);
 
             // Layer One settings
-            this.Material.SetFloat("_LayerOneScrollX", Settings.LayerOneScrollX);
-            this.Material.SetFloat("_LayerOneScrollY", Settings.LayerOneScrollY);
+            this.Material.SetFloat("_LayerOneScrollSpeedX", Settings.LayerOneScrollX);
+            this.Material.SetFloat("_LayerOneScrollSpeedY", Settings.LayerOneScrollY);
             this.Material.SetFloat("_LayerOneZoomScale", Settings.LayerOneZoomScale);
 
             // Layer Two settings
