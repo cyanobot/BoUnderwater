@@ -42,8 +42,6 @@ namespace BoUnderwater
                     {
                         GameCondition condition = GameConditionMaker.MakeConditionPermanent(conditionToActivate);
                         map.gameConditionManager.RegisterCondition(condition);
-
-                        //Log.Message($"Activated {conditionToActivate.defName} in {targetBiome.defName}");
                     }
                 }
             }
