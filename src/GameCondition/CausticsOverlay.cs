@@ -31,7 +31,7 @@ namespace BoUnderwater
         {
             this.MainTex = ContentFinder<Texture2D>.Get("Layer1");
             this.SecondTex = ContentFinder<Texture2D>.Get("Layer2");
-            this.DistortTex = ContentFinder<Texture2D>.Get("DistortionNoise4");
+            this.DistortTex = ContentFinder<Texture2D>.Get("DistortionNoise");
             this.Shader = LoadedModManager.GetMod<UnderwaterBiome>().GetShaderFromAssets(CausticShaderAssetName);
 
             if (this.Shader == null)
