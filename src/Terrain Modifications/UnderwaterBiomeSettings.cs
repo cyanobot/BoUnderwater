@@ -27,11 +27,12 @@ namespace BoUnderwater
         public float DistortionStrR = 0.06f;
         public float DistortionStrG = 0.06f;
         public float DistortionScale = 0.1f;
-        public float BaseScale = 4f;
-        public float MinZoom = 10f;
-        public float MaxZoom = 60f;
-        public float ScaleAtMaxZoom = 15f;
-        public float MinScale = 4f;
+
+
+
+        public float ScaleAtMinHeight = 1f;
+        public float ScaleAtMaxHeight = 1f;
+
 
         public override void ExposeData()
         {
@@ -56,11 +57,10 @@ namespace BoUnderwater
             Scribe_Values.Look(ref DistortionSpeedY, "DistortionSpeedY", 0.01f);
             Scribe_Values.Look(ref DistortionStrR, "DistortionStrR", 0.06f);
             Scribe_Values.Look(ref DistortionStrG, "DistortionStrG", 0.06f);
-            Scribe_Values.Look(ref BaseScale, "BaseScale", 4f);
-            Scribe_Values.Look(ref MinZoom, "MinZoom", 10f);
-            Scribe_Values.Look(ref MaxZoom, "MaxZoom", 60f);
-            Scribe_Values.Look(ref ScaleAtMaxZoom, "ScaleAtMaxZoom", 15f);
-            Scribe_Values.Look(ref MinScale, "MinScale", 4f);
+
+            Scribe_Values.Look(ref ScaleAtMinHeight, "ScaleAtMinHeight",1f);
+            Scribe_Values.Look(ref ScaleAtMaxHeight, "ScaleAtMaxHeight", 1f);
+
             base.ExposeData();
         }
     }

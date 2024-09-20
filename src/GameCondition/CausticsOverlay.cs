@@ -78,14 +78,15 @@ namespace BoUnderwater
 
         private float GetZoom()
         {
-            float minZoom = 10f;
-            float maxZoom = 60f;
-            float currentZoom = Find.CameraDriver.ZoomRootSize;
+            float minZoom = Find.CameraDriver.ZoomRootSize * (float)CameraZoomRange.Closest;
+            float maxZoom = Find.CameraDriver.ZoomRootSize * (float)CameraZoomRange.Furthest;
+
+            float currentZoom = Find.CameraDriver.ZoomRootSize * (float)Find.CameraDriver.CurrentZoom;
 
 
 
             var Settings = LoadedModManager.GetMod<UnderwaterBiome>().GetSettings<UnderwaterBiomeSettings>();
-            float normalizedZoom = Mathf.InverseLerp(Settings.MinScale, Settings.ScaleAtMaxZoom, currentZoom);
+            float normalizedZoom = Mathf.Lerp(Settings.ScaleAtMinHeight, Settings.ScaleAtMaxHeight, Mathf.Clamp01(currentZoom / maxZoom));
             return normalizedZoom;
         }
 
@@ -98,7 +99,7 @@ namespace BoUnderwater
             this.Material.SetColor("_Color", Settings.Color);
             this.Material.SetColor("_ColorTwo", Settings.Color2);
 
-            this.Material.SetFloat("_GlobalScale", Settings.GlobalScale);
+            this.Material.SetFloat("_GlobalScale", Settings.GlobalScale * GetZoom());
 
             // Layer One settings
             this.Material.SetFloat("_LayerOneScrollSpeedX", Settings.LayerOneScrollX);
@@ -124,13 +125,6 @@ namespace BoUnderwater
             this.Material.SetFloat("_DistortionSpeedY", Settings.DistortionSpeedY);
             this.Material.SetFloat("_DistortionStrR", Settings.DistortionStrR);
             this.Material.SetFloat("_DistortionStrG", Settings.DistortionStrG);
-
-            // Scale and zoom settings
-            this.Material.SetFloat("_BaseScale", Settings.BaseScale);
-            this.Material.SetFloat("_MinZoom", Settings.MinZoom);
-            this.Material.SetFloat("_MaxZoom", Settings.MaxZoom);
-            this.Material.SetFloat("_ScaleAtMaxZoom", Settings.ScaleAtMaxZoom);
-            this.Material.SetFloat("_MinScale", Settings.MinScale);
         }
     }
 }

@@ -86,16 +86,11 @@ namespace BoUnderwater
             }
 
             // Scale and zoom settings
-            listingStandard.Label("Base Scale: " + Settings.BaseScale.ToString("F2"));
-            Settings.BaseScale = listingStandard.Slider(Settings.BaseScale, 1f, 10f);
-            listingStandard.Label("Min Zoom: " + Settings.MinZoom.ToString("F2"));
-            Settings.MinZoom = listingStandard.Slider(Settings.MinZoom, 1f, 30f);
-            listingStandard.Label("Max Zoom: " + Settings.MaxZoom.ToString("F2"));
-            Settings.MaxZoom = listingStandard.Slider(Settings.MaxZoom, 31f, 100f);
-            listingStandard.Label("Scale At Max Zoom: " + Settings.ScaleAtMaxZoom.ToString("F2"));
-            Settings.ScaleAtMaxZoom = listingStandard.Slider(Settings.ScaleAtMaxZoom, 0f, 100f);
-            listingStandard.Label("Min Scale: " + Settings.MinScale.ToString("F2"));
-            Settings.MinScale = listingStandard.Slider(Settings.MinScale, 0f, 100f);
+            listingStandard.Label("Scale At Min Height: " + Settings.ScaleAtMinHeight.ToString("F2"));
+            Settings.ScaleAtMinHeight = listingStandard.Slider(Settings.ScaleAtMinHeight, 0f, 10f);
+            listingStandard.Label("Scale At Max Height: " + Settings.ScaleAtMaxHeight.ToString("F2"));
+            Settings.ScaleAtMaxHeight = listingStandard.Slider(Settings.ScaleAtMaxHeight, 0f, 10f);
+
 
             // Color pickers
             listingStandard.Gap();
