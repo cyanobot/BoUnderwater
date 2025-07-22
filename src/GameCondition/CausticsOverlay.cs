@@ -42,7 +42,7 @@ namespace BoUnderwater
             float zoomScale = Mathf.Lerp(baseScale, scaleAtMaxZoom, GetZoom());
 
             this.Material.SetFloat("_ZoomScale", zoomScale);
-            this.Material.SetFloat("_GlobalScale", UnderwaterBiomeSettings.GlobalScale * GetZoom());
+            this.Material.SetFloat("_GlobalScale", UnderwaterBiomeSettings.Caustics_GlobalScale * GetZoom());
         }
 
         private float GetZoom()
@@ -55,44 +55,8 @@ namespace BoUnderwater
 
 
             var Settings = LoadedModManager.GetMod<UnderwaterBiome>().GetSettings<UnderwaterBiomeSettings>();
-            float normalizedZoom = Mathf.Lerp(UnderwaterBiomeSettings.ScaleAtMinHeight, UnderwaterBiomeSettings.ScaleAtMaxHeight, Mathf.Clamp01(currentZoom / maxZoom));
+            float normalizedZoom = Mathf.Lerp(UnderwaterBiomeSettings.Caustics_ScaleAtMinHeight, UnderwaterBiomeSettings.Caustics_ScaleAtMaxHeight, Mathf.Clamp01(currentZoom / maxZoom));
             return normalizedZoom;
-        }
-
-
-      
-        public void UpdateMaterial()
-        {
-            // General settings
-            this.Material.SetFloat("_Opacity", UnderwaterBiomeSettings.Opacity);
-            this.Material.SetColor("_Color", UnderwaterBiomeSettings.Color);
-            this.Material.SetColor("_ColorTwo", UnderwaterBiomeSettings.Color2);
-
-
-            // Layer One settings
-            this.Material.SetFloat("_LayerOneScrollSpeedX", UnderwaterBiomeSettings.LayerOneScrollX);
-            this.Material.SetFloat("_LayerOneScrollSpeedY", UnderwaterBiomeSettings.LayerOneScrollY);
-            this.Material.SetFloat("_LayerOneZoomScale", UnderwaterBiomeSettings.LayerOneZoomScale);
-
-            // Layer Two settings
-            this.Material.SetFloat("_LayerTwoSpeedX", UnderwaterBiomeSettings.LayerTwoScrollX);
-            this.Material.SetFloat("_LayerTwoSpeedY", UnderwaterBiomeSettings.LayerTwiScrollY);
-            this.Material.SetFloat("_LayerTwoZoomScale", UnderwaterBiomeSettings.LayerTwiZoomScale);
-
-            // Voronoi settings
-            this.Material.SetFloat("_VoronoiCellDensity", UnderwaterBiomeSettings.VoronoiCellDensity);
-            this.Material.SetFloat("_VoronoiSpeed", UnderwaterBiomeSettings.VoronoiSpeed);
-            this.Material.SetColor("_VoronoiColor1", UnderwaterBiomeSettings.VoronoiColorOne);
-            this.Material.SetColor("_VoronoiColor2", UnderwaterBiomeSettings.VoronoiColorTwo);
-            this.Material.SetFloat("_VoronoiMax", UnderwaterBiomeSettings.VoronoiMax);
-
-            // Distortion settings
-            this.Material.SetFloat("_EnableDistortion", UnderwaterBiomeSettings.EnableDistortion ? 1f : 0f);
-            this.Material.SetFloat("_DistortionScale", UnderwaterBiomeSettings.DistortionScale);
-            this.Material.SetFloat("_DistortionSpeedX", UnderwaterBiomeSettings.DistortionSpeedX);
-            this.Material.SetFloat("_DistortionSpeedY", UnderwaterBiomeSettings.DistortionSpeedY);
-            this.Material.SetFloat("_DistortionStrR", UnderwaterBiomeSettings.DistortionStrR);
-            this.Material.SetFloat("_DistortionStrG", UnderwaterBiomeSettings.DistortionStrG);
         }
 
         public override void TickOverlay(Map map, float lerpFactor)

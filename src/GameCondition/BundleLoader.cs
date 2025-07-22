@@ -72,34 +72,34 @@ namespace BoUnderwater
         public static void UpdateCausticsMaterial()
         {
             // General settings
-            CausticsMaterial.SetFloat("_Opacity", UnderwaterBiomeSettings.Opacity);
-            CausticsMaterial.SetColor("_Color", UnderwaterBiomeSettings.Color);
-            CausticsMaterial.SetColor("_ColorTwo", UnderwaterBiomeSettings.Color2);
+            CausticsMaterial.SetFloat("_Opacity", UnderwaterBiomeSettings.Caustics_Opacity);
+            CausticsMaterial.SetColor("_Color", UnderwaterBiomeSettings.Caustics_Color);
+            CausticsMaterial.SetColor("_ColorTwo", UnderwaterBiomeSettings.Caustics_Color2);
 
             // Layer One settings
-            CausticsMaterial.SetFloat("_LayerOneScrollSpeedX", UnderwaterBiomeSettings.LayerOneScrollX);
-            CausticsMaterial.SetFloat("_LayerOneScrollSpeedY", UnderwaterBiomeSettings.LayerOneScrollY);
-            CausticsMaterial.SetFloat("_LayerOneZoomScale", UnderwaterBiomeSettings.LayerOneZoomScale);
+            CausticsMaterial.SetFloat("_LayerOneScrollSpeedX", UnderwaterBiomeSettings.Caustics_LayerOneScrollX);
+            CausticsMaterial.SetFloat("_LayerOneScrollSpeedY", UnderwaterBiomeSettings.Caustics_LayerOneScrollY);
+            CausticsMaterial.SetFloat("_LayerOneZoomScale", UnderwaterBiomeSettings.Caustics_LayerOneZoomScale);
 
             // Layer Two settings
-            CausticsMaterial.SetFloat("_LayerTwoSpeedX", UnderwaterBiomeSettings.LayerTwoScrollX);
-            CausticsMaterial.SetFloat("_LayerTwoSpeedY", UnderwaterBiomeSettings.LayerTwiScrollY);
-            CausticsMaterial.SetFloat("_LayerTwoZoomScale", UnderwaterBiomeSettings.LayerTwiZoomScale);
+            CausticsMaterial.SetFloat("_LayerTwoSpeedX", UnderwaterBiomeSettings.Caustics_LayerTwoScrollX);
+            CausticsMaterial.SetFloat("_LayerTwoSpeedY", UnderwaterBiomeSettings.Caustics_LayerTwoScrollY);
+            CausticsMaterial.SetFloat("_LayerTwoZoomScale", UnderwaterBiomeSettings.Caustics_LayerTwoZoomScale);
 
             // Voronoi settings
-            CausticsMaterial.SetFloat("_VoronoiCellDensity", UnderwaterBiomeSettings.VoronoiCellDensity);
-            CausticsMaterial.SetFloat("_VoronoiSpeed", UnderwaterBiomeSettings.VoronoiSpeed);
-            CausticsMaterial.SetColor("_VoronoiColor1", UnderwaterBiomeSettings.VoronoiColorOne);
-            CausticsMaterial.SetColor("_VoronoiColor2", UnderwaterBiomeSettings.VoronoiColorTwo);
-            CausticsMaterial.SetFloat("_VoronoiMax", UnderwaterBiomeSettings.VoronoiMax);
+            CausticsMaterial.SetFloat("_VoronoiCellDensity", UnderwaterBiomeSettings.Caustics_VoronoiCellDensity);
+            CausticsMaterial.SetFloat("_VoronoiSpeed", UnderwaterBiomeSettings.Caustics_VoronoiSpeed);
+            CausticsMaterial.SetColor("_VoronoiColor1", UnderwaterBiomeSettings.Caustics_VoronoiColorOne);
+            CausticsMaterial.SetColor("_VoronoiColor2", UnderwaterBiomeSettings.Caustics_VoronoiColorTwo);
+            CausticsMaterial.SetFloat("_VoronoiMax", UnderwaterBiomeSettings.Caustics_VoronoiMax);
 
             // Distortion settings
-            CausticsMaterial.SetFloat("_EnableDistortion", UnderwaterBiomeSettings.EnableDistortion ? 1f : 0f);
-            CausticsMaterial.SetFloat("_DistortionScale", UnderwaterBiomeSettings.DistortionScale);
-            CausticsMaterial.SetFloat("_DistortionSpeedX", UnderwaterBiomeSettings.DistortionSpeedX);
-            CausticsMaterial.SetFloat("_DistortionSpeedY", UnderwaterBiomeSettings.DistortionSpeedY);
-            CausticsMaterial.SetFloat("_DistortionStrR", UnderwaterBiomeSettings.DistortionStrR);
-            CausticsMaterial.SetFloat("_DistortionStrG", UnderwaterBiomeSettings.DistortionStrG);
+            CausticsMaterial.SetFloat("_EnableDistortion", UnderwaterBiomeSettings.Caustics_EnableDistortion ? 1f : 0f);
+            CausticsMaterial.SetFloat("_DistortionScale", UnderwaterBiomeSettings.Caustics_DistortionScale);
+            CausticsMaterial.SetFloat("_DistortionSpeedX", UnderwaterBiomeSettings.Caustics_DistortionSpeedX);
+            CausticsMaterial.SetFloat("_DistortionSpeedY", UnderwaterBiomeSettings.Caustics_DistortionSpeedY);
+            CausticsMaterial.SetFloat("_DistortionStrR", UnderwaterBiomeSettings.Caustics_DistortionStrR);
+            CausticsMaterial.SetFloat("_DistortionStrG", UnderwaterBiomeSettings.Caustics_DistortionStrG);
 
         }
     }
