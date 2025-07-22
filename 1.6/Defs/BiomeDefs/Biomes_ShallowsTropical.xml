@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<BiomeDef>
+    	<defName>UB_ShallowsTropical</defName>
+    	<label>Tropical Shallows</label>
+    	<description>bla bla bla</description>
+      <workerClass>BoUnderwater.BiomeWorker_UnderwaterIslands</workerClass>
+			<modExtensions>
+			<li Class="BiomesCore.DefModExtensions.BiomesMap">
+				<isIsland>true</isIsland>
+				<allowBeach>false</allowBeach>
+			 <hasScatterables>true</hasScatterables>
+				<seasonalTemperatureShift>0.2</seasonalTemperatureShift>
+				<disallowedWeathers>
+					<li>DryThunderstorm</li>
+					<li>FoggyRain</li>
+					<li>Rain</li>
+					<li>RainyThunderstorm</li>
+					<li>SnowGentle</li>
+					<li>SnowHard</li>
+					<li MayRequire="sarg.alphabiomes">AB_AcidRainWeather</li>
+					<li MayRequire="sarg.alphabiomes">AB_ForsakenRainyNight</li>
+					<li MayRequire="sarg.alphabiomes">AB_ForsakenThunderstorm</li>
+					<li MayRequire="ReGrowth.BOTR.Core">RG_Blizzard</li>
+					<li MayRequire="ReGrowth.BOTR.Core">RG_FoggySandstorm</li>
+					<li MayRequire="ReGrowth.BOTR.Core">RG_FoggySnow</li>
+					<li MayRequire="ReGrowth.BOTR.Core">RG_Monsoon</li>
+					<li MayRequire="ReGrowth.BOTR.Core">RG_Overcast</li>
+					<li MayRequire="ReGrowth.BOTR.Core">RG_SandStorm</li>
+					<li MayRequire="ReGrowth.BOTR.Core">RG_SandStormHard</li>
+					<li MayRequire="ReGrowth.BOTR.Wastelands">RG_ToxicRain</li>
+					<li MayRequire="ReGrowth.BOTR.Wastelands">RG_ToxicRainyThunderstorm</li>
+				</disallowedWeathers>
+			</li>
+			<li Class="BiomesCore.DefModExtensions.DisableIncidentsExtension">
+				<disabledIncidents>
+					<li>Aurora</li>
+					<li>ColdSnap</li>
+					<li>Eclipse</li>
+					<li>Flashstorm</li>
+					<li>HeatWave</li>
+					<li>MeteoriteImpact</li>
+					<li>ToxicFallout</li>
+					<li>VolcanicWinter</li>
+					<li MayRequire="sarg.alphaanimals">AA_IncidentSummitCrab</li>
+					<li MayRequire="sarg.alphaanimals">AA_Incident_SkyMeteorite</li>
+					<li MayRequire="sarg.alphaanimals">AA_Eclipse</li>
+					<li MayRequire="VanillaExpanded.VEE">VEE_IceAge</li>
+					<li MayRequire="VanillaExpanded.VEE">VEE_GlobalWarming</li>
+					<li MayRequire="VanillaExpanded.VEE">VEE_LongNight</li>
+					<li MayRequire="VanillaExpanded.VEE">VEE_MeteoriteShower</li>
+					<li MayRequire="VanillaExpanded.VEE">VEE_PsychicRain</li>
+					<li MayRequire="VanillaExpanded.VEE">VEE_ShuttleCrash</li>
+					<li MayRequire="VanillaExpanded.VEE">VEE_SpaceBattle</li>
+					<li MayRequire="OskarPotocki.VFE.Insectoid">VFEI_InfestedSmallShipPartDrop</li>
+					<li MayRequire="OskarPotocki.VFE.Insectoid">VFEI_InfestedShipPartDrop</li>
+					<li MayRequire="OskarPotocki.VFE.Insectoid">VFEI_InfestedShipModuleDrop</li>
+				</disabledIncidents>
+			</li>
+		</modExtensions>
+		<animalDensity>2.5</animalDensity>
+		<plantDensity>0.40</plantDensity>
+		<settlementSelectionWeight>1</settlementSelectionWeight>
+		<movementDifficulty>0.8</movementDifficulty>
+		<texture>World/MapGraphics/TropicalShallowsMap</texture>
+		<forageability>1</forageability>
+		<foragedFood>RawBerries</foragedFood>
+		<wildPlantRegrowDays>20</wildPlantRegrowDays>
+		<soundsAmbient>
+			<li>Ambient_NightInsects_Standard</li>
+		</soundsAmbient>
+		<diseases>
+			<li>
+				<diseaseInc>Disease_GutWorms</diseaseInc>
+				<commonality>50</commonality>
+			</li>
+			<li>
+				<diseaseInc>Disease_MuscleParasites</diseaseInc>
+				<commonality>50</commonality>
+			</li>
+			<li>
+				<diseaseInc>Disease_AnimalFlu</diseaseInc>
+				<commonality>100</commonality>
+			</li>
+			<li>
+				<diseaseInc>Disease_AnimalPlague</diseaseInc>
+				<commonality>100</commonality>
+			</li>
+		</diseases>
+		<terrainPatchMakers>
+      		<li>
+       	 		<perlinFrequency>0.015</perlinFrequency>
+        		<thresholds>
+							<li>
+								<terrain>Marble_Rough</terrain>
+								<min>0.01</min>
+								<max>0.20</max>
+							</li>
+          			<li>
+            			<terrain>FineSand</terrain>
+            			<min>0.01</min>
+            			<max>0.20</max>
+          			</li>
+          			<li>
+            			<terrain>YellowGrass</terrain>
+            			<min>0.10</min>
+            			<max>0.99</max>
+          			</li>
+    			</thresholds>
+      		</li>
+    	</terrainPatchMakers>
+		<terrainsByFertility> <!-- REPLACE section-->
+			<li>
+				<terrain>FineSand</terrain>
+				<min>-999</min>
+				<max>999</max>
+			</li>
+			<li>
+				<terrain>YellowGrass</terrain>
+				<min>0.97</min>
+				<max>999</max>
+			</li>
+		</terrainsByFertility>
+		<baseWeatherCommonalities>
+      		<Clear>18</Clear>
+      		<DryThunderstorm>1</DryThunderstorm>
+      		<GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
+    </baseWeatherCommonalities>
+		<wildPlants>
+			<UB_Plant_SeaGrass>1</UB_Plant_SeaGrass>
+			<UB_Plant_Demosponge>1.6</UB_Plant_Demosponge>
+			<UB_Plant_SeaLily>0.5</UB_Plant_SeaLily>
+			<UB_Plant_ShelfCoral>1</UB_Plant_ShelfCoral>
+			<UB_Plant_Anemone>1</UB_Plant_Anemone>
+		</wildPlants>
+	</BiomeDef>
+</Defs>

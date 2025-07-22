@@ -33,6 +33,10 @@ namespace BoUnderwater
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(viewRect);
 
+            listingStandard.GapLine();
+
+            listingStandard.Label("Caustics Settings");
+
             // General settings
             listingStandard.Label("Opacity: " + Settings.Opacity.ToString("F2"));
             Settings.Opacity = listingStandard.Slider(Settings.Opacity, 0f, 1f);

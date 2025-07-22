@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <BoUnderwater.TerrainModificationDef>
+    <defName>UnderWaterTerrainModification</defName>
+    <TargetTerrainDefNames>
+      <li>Granite_Rough</li>
+      <li>Granite_RoughHewn</li>
+      <li>Granite_Smooth</li>
+      <li>Marble_Rough</li>
+      <li>Marble_RoughHewn</li>
+      <li>Marble_Smooth</li>
+      <li>Sandstone_Rough</li>
+      <li>Sandstone_RoughHewn</li>
+      <li>Sandstone_Smooth</li>
+      <li>Slate_Rough</li>
+      <li>Slate_RoughHewn</li>
+      <li>Slate_Smooth</li>
+    </TargetTerrainDefNames>
+    <TerrainTags>
+      <li>IGrowOnStone</li>
+    </TerrainTags>
+    <StoneFertilityOverride>0.1</StoneFertilityOverride>
+    <ApplicableBiomes>
+      <li>UB_ShallowsTropical</li>
+    </ApplicableBiomes>
+  </BoUnderwater.TerrainModificationDef>
+</Defs>

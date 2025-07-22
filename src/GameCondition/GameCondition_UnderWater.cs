@@ -45,7 +45,7 @@ namespace BoUnderwater
             {
                 foreach (var item in SkyOverlays(map))
                 {
-                    item.TickOverlay(map);
+                    item.TickOverlay(map,1f);
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Verse;
+using System;
 
 namespace BoUnderwater
 {
@@ -58,7 +59,7 @@ namespace BoUnderwater
             this.Material.SetColor("_Color2", new Color(1, 1,1));
 
 
-            this.worldOverlayMat = this.Material;
+            //this.worldOverlayMat = this.Material;
         }
 
         public void UpdateZoom()
@@ -125,6 +126,21 @@ namespace BoUnderwater
             this.Material.SetFloat("_DistortionSpeedY", Settings.DistortionSpeedY);
             this.Material.SetFloat("_DistortionStrR", Settings.DistortionStrR);
             this.Material.SetFloat("_DistortionStrG", Settings.DistortionStrG);
+        }
+
+        public override void TickOverlay(Map map, float lerpFactor)
+        {
+           
+        }
+
+        public override void DrawOverlay(Map map)
+        {
+            SkyOverlay.DrawWorldOverlay(map, Material);
+        }
+
+        public override void SetOverlayColor(Color color)
+        {
+            
         }
     }
 }

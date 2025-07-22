@@ -6,8 +6,8 @@ namespace BoUnderwater
 {
     //override can plant logic, if in biome that has mod extension, and terrain in question is natural stone, then check if plant has IGrowOnStone terrain tag.
     [HarmonyPatch(typeof(PlantUtility), nameof(PlantUtility.CanEverPlantAt),
-    new[] { typeof(ThingDef), typeof(IntVec3), typeof(Map), typeof(Thing), typeof(bool), typeof(bool) },
-    new[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal })]
+    new[] { typeof(ThingDef), typeof(IntVec3), typeof(Map), typeof(Thing), typeof(bool), typeof(bool), typeof(bool) },
+    new[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal })]
     public static class Patch_PlantUtility_CanEverPlantAt
     {
         public static bool Prefix(ThingDef plantDef, IntVec3 c, Map map, ref Thing blockingThing, bool canWipePlantsExceptTree, bool writeNoReason, ref AcceptanceReport __result)

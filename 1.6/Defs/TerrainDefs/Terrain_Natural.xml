@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainDef Name="NaturalTerrainBase" Abstract="True">
+    <filthAcceptanceMask>
+      <li>Unnatural</li>
+    </filthAcceptanceMask>
+    <natural>true</natural>
+    <pollutionOverlayTexturePath>Terrain/Surfaces/PollutionSoil</pollutionOverlayTexturePath>
+    <pollutionColor>(1, 1, 1, 0.43)</pollutionColor>
+    <pollutionOverlayScale>(0.66, 0.66)</pollutionOverlayScale>
+  </TerrainDef>
+
+  <!-- Standard soils -->
+
+  <TerrainDef ParentName="NaturalTerrainBase">
+    <defName>FineSand</defName>
+    <label>fine sand</label>
+    <texturePath>World/Biomes/FineSand</texturePath>
+    <pollutedTexturePath>World/Biomes/FineSand</pollutedTexturePath>
+    <edgeType>FadeRough</edgeType>
+    <categoryType>Soil</categoryType>
+    <renderPrecedence>340</renderPrecedence>
+    <pathCost>2</pathCost>
+    <statBases>
+      <Beauty>-3</Beauty>
+      <BeautyOutdoors>0</BeautyOutdoors>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <scatterType>Rocky</scatterType>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>GrowSoil</li>
+      <li>Diggable</li>
+    </affordances>
+    <generatedFilth>Filth_Dirt</generatedFilth>
+    <fertility>1.0</fertility>
+    <takeFootprints>True</takeFootprints>
+    <tools>
+      <li>
+        <label>dirt</label>
+        <capacities>
+          <li>KickMaterialInEyes</li>
+        </capacities>
+        <hediff>DirtInEyes</hediff>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+    </tools>
+    <tags>
+      <li>Soil</li>
+    </tags>
+  </TerrainDef>
+
+  <TerrainDef ParentName="NaturalTerrainBase">
+    <defName>YellowGrass</defName>
+    <label>yellow seagrass</label>
+    <texturePath>World/Biomes/YellowGrass</texturePath>
+    <pollutedTexturePath>World/Biomes/YellowGrass</pollutedTexturePath>
+    <pollutionOverlayTexturePath>World/Biomes/YellowGrass</pollutionOverlayTexturePath>
+    <pollutionShaderType MayRequire="Ludeon.RimWorld.Biotech">TerrainFadeRoughSoftLight</pollutionShaderType>
+    <pollutionOverlayScale>(0.66, 0.66)</pollutionOverlayScale>
+    <pollutionColor>(1, 1, 1, 1)</pollutionColor>
+    <edgeType>FadeRough</edgeType>
+    <categoryType>Soil</categoryType>
+    <renderPrecedence>315</renderPrecedence>
+    <pathCost>3</pathCost>
+    <statBases>
+      <Beauty>-3</Beauty>
+      <BeautyOutdoors>0</BeautyOutdoors>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <generatedFilth>Filth_Dirt</generatedFilth>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>GrowSoil</li>
+      <li>Diggable</li>
+    </affordances>
+    <fertility>1</fertility>
+    <takeFootprints>True</takeFootprints>
+    <avoidWander>false</avoidWander>
+    <tags>
+      <li>YellowGrass</li>
+      <li>AnemoneGrowth</li>
+    </tags>
+    <modExtensions>
+      <li Class="BiomesCore.DefModExtensions.Biomes_PlantControl">
+        <terrainTags>
+          <li>YellowGrass</li>
+          <li>AnemoneGrowth</li>
+        </terrainTags>
+      </li>
+    </modExtensions>
+  </TerrainDef>
+
+
+</Defs>
