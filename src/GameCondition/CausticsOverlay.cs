@@ -6,12 +6,7 @@ namespace BoUnderwater
 {
     public class CausticsOverlay : SkyOverlay
     {
-        public Shader Shader;
-        public Texture2D MainTex;
-        public Texture2D SecondTex;
-        public Texture2D DistortTex;
         public Material Material;
-
 
         private UnderwaterBiomeSettings _Settings;
         private UnderwaterBiomeSettings Settings
@@ -30,36 +25,8 @@ namespace BoUnderwater
 
         public CausticsOverlay()
         {
-            this.MainTex = ContentFinder<Texture2D>.Get("Layer1");
-            this.SecondTex = ContentFinder<Texture2D>.Get("Layer2");
-            this.DistortTex = ContentFinder<Texture2D>.Get("DistortionNoise");
-            this.Shader = LoadedModManager.GetMod<UnderwaterBiome>().GetShaderFromAssets(CausticShaderAssetName);
-
-            if (this.Shader == null)
-            {
-                Log.Error($"Could not find shader {CausticShaderAssetName} in assets.");
-                return;
-            }
-
-            this.Material = new Material(this.Shader);
-            this.Material.SetTexture("_MainTex", this.MainTex);
-            this.Material.SetTexture("_LayerTwo", this.SecondTex);
-            this.Material.SetTexture("_DistortMap", this.DistortTex);
-
-
-            this.Material.SetFloat("_Opacity", 0.14f);
-            this.Material.SetFloat("_ScrollSpeed", 0.3f);
-      
-            this.Material.SetFloat("_DistortionSpeed", 0.04f);
-            this.Material.SetFloat("_DistortionStrR", 0.06f);
-            this.Material.SetFloat("_DistortionStrG", 0.06f);
-
-
-            this.Material.SetColor("_Color", new Color(1, 1, 1));
-            this.Material.SetColor("_Color2", new Color(1, 1,1));
-
-
-            //this.worldOverlayMat = this.Material;
+            this.Material = BundleLoader.CausticsMaterial;
+            BundleLoader.UpdateCausticsMaterial();
         }
 
         public void UpdateZoom()
@@ -75,6 +42,7 @@ namespace BoUnderwater
             float zoomScale = Mathf.Lerp(baseScale, scaleAtMaxZoom, GetZoom());
 
             this.Material.SetFloat("_ZoomScale", zoomScale);
+            this.Material.SetFloat("_GlobalScale", UnderwaterBiomeSettings.GlobalScale * GetZoom());
         }
 
         private float GetZoom()
@@ -87,7 +55,7 @@ namespace BoUnderwater
 
 
             var Settings = LoadedModManager.GetMod<UnderwaterBiome>().GetSettings<UnderwaterBiomeSettings>();
-            float normalizedZoom = Mathf.Lerp(Settings.ScaleAtMinHeight, Settings.ScaleAtMaxHeight, Mathf.Clamp01(currentZoom / maxZoom));
+            float normalizedZoom = Mathf.Lerp(UnderwaterBiomeSettings.ScaleAtMinHeight, UnderwaterBiomeSettings.ScaleAtMaxHeight, Mathf.Clamp01(currentZoom / maxZoom));
             return normalizedZoom;
         }
 
@@ -96,36 +64,35 @@ namespace BoUnderwater
         public void UpdateMaterial()
         {
             // General settings
-            this.Material.SetFloat("_Opacity", Settings.Opacity);
-            this.Material.SetColor("_Color", Settings.Color);
-            this.Material.SetColor("_ColorTwo", Settings.Color2);
+            this.Material.SetFloat("_Opacity", UnderwaterBiomeSettings.Opacity);
+            this.Material.SetColor("_Color", UnderwaterBiomeSettings.Color);
+            this.Material.SetColor("_ColorTwo", UnderwaterBiomeSettings.Color2);
 
-            this.Material.SetFloat("_GlobalScale", Settings.GlobalScale * GetZoom());
 
             // Layer One settings
-            this.Material.SetFloat("_LayerOneScrollSpeedX", Settings.LayerOneScrollX);
-            this.Material.SetFloat("_LayerOneScrollSpeedY", Settings.LayerOneScrollY);
-            this.Material.SetFloat("_LayerOneZoomScale", Settings.LayerOneZoomScale);
+            this.Material.SetFloat("_LayerOneScrollSpeedX", UnderwaterBiomeSettings.LayerOneScrollX);
+            this.Material.SetFloat("_LayerOneScrollSpeedY", UnderwaterBiomeSettings.LayerOneScrollY);
+            this.Material.SetFloat("_LayerOneZoomScale", UnderwaterBiomeSettings.LayerOneZoomScale);
 
             // Layer Two settings
-            this.Material.SetFloat("_LayerTwoSpeedX", Settings.LayerTwoScrollX);
-            this.Material.SetFloat("_LayerTwoSpeedY", Settings.LayerTwiScrollY);
-            this.Material.SetFloat("_LayerTwoZoomScale", Settings.LayerTwiZoomScale);
+            this.Material.SetFloat("_LayerTwoSpeedX", UnderwaterBiomeSettings.LayerTwoScrollX);
+            this.Material.SetFloat("_LayerTwoSpeedY", UnderwaterBiomeSettings.LayerTwiScrollY);
+            this.Material.SetFloat("_LayerTwoZoomScale", UnderwaterBiomeSettings.LayerTwiZoomScale);
 
             // Voronoi settings
-            this.Material.SetFloat("_VoronoiCellDensity", Settings.VoronoiCellDensity);
-            this.Material.SetFloat("_VoronoiSpeed", Settings.VoronoiSpeed);
-            this.Material.SetColor("_VoronoiColor1", Settings.VoronoiColorOne);
-            this.Material.SetColor("_VoronoiColor2", Settings.VoronoiColorTwo);
-            this.Material.SetFloat("_VoronoiMax", Settings.VoronoiMax);
+            this.Material.SetFloat("_VoronoiCellDensity", UnderwaterBiomeSettings.VoronoiCellDensity);
+            this.Material.SetFloat("_VoronoiSpeed", UnderwaterBiomeSettings.VoronoiSpeed);
+            this.Material.SetColor("_VoronoiColor1", UnderwaterBiomeSettings.VoronoiColorOne);
+            this.Material.SetColor("_VoronoiColor2", UnderwaterBiomeSettings.VoronoiColorTwo);
+            this.Material.SetFloat("_VoronoiMax", UnderwaterBiomeSettings.VoronoiMax);
 
             // Distortion settings
-            this.Material.SetFloat("_EnableDistortion", Settings.EnableDistortion ? 1f : 0f);
-            this.Material.SetFloat("_DistortionScale", Settings.DistortionScale);
-            this.Material.SetFloat("_DistortionSpeedX", Settings.DistortionSpeedX);
-            this.Material.SetFloat("_DistortionSpeedY", Settings.DistortionSpeedY);
-            this.Material.SetFloat("_DistortionStrR", Settings.DistortionStrR);
-            this.Material.SetFloat("_DistortionStrG", Settings.DistortionStrG);
+            this.Material.SetFloat("_EnableDistortion", UnderwaterBiomeSettings.EnableDistortion ? 1f : 0f);
+            this.Material.SetFloat("_DistortionScale", UnderwaterBiomeSettings.DistortionScale);
+            this.Material.SetFloat("_DistortionSpeedX", UnderwaterBiomeSettings.DistortionSpeedX);
+            this.Material.SetFloat("_DistortionSpeedY", UnderwaterBiomeSettings.DistortionSpeedY);
+            this.Material.SetFloat("_DistortionStrR", UnderwaterBiomeSettings.DistortionStrR);
+            this.Material.SetFloat("_DistortionStrG", UnderwaterBiomeSettings.DistortionStrG);
         }
 
         public override void TickOverlay(Map map, float lerpFactor)

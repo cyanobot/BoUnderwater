@@ -1,19 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <BoUnderwater.UnderWaterGameConditionDef>
+<GameConditionDef>
   <defName>UnderWaterEnvironment</defName>
   <label>Underwater Environment</label>
   <description>An underwater environment with unique visual effects.</description>
   <conditionClass>BoUnderwater.GameCondition_UnderWaterCondition</conditionClass>
-  <SkyColor>(1,0.953, 0.773)</SkyColor>
-   <ShadowColor>(0.596, 0.902,1)</ShadowColor>
-   <OverlayColor>(0, 0, 0, 0)</OverlayColor>
-  <SkyColorSaturation>1</SkyColorSaturation>
-  <OverallGlowIntensityMultiplier>0.7</OverallGlowIntensityMultiplier>
-  <letterDef>NegativeEvent</letterDef>
   <weatherDef>Clear</weatherDef>
   <canBePermanent>true</canBePermanent>
-  <natural>false</natural>
+  <natural>true</natural>
   <allowUnderground>true</allowUnderground>
-</BoUnderwater.UnderWaterGameConditionDef>
+</GameConditionDef>
 </Defs>

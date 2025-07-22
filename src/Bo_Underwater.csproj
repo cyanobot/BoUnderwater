@@ -75,24 +75,24 @@
   <ItemGroup>
     <Compile Include="Comps\CompProperties_ProximityComp.cs" />
     <Compile Include="Comps\CompProperties_Proximity_ShowMote.cs" />
-    <Compile Include="GameCondition\BiomeWorker_UnderwaterIslands.cs" />
+    <Compile Include="BiomeGen\BiomeWorker_UnderwaterIslands.cs" />
+    <Compile Include="GameCondition\BundleLoader.cs" />
     <Compile Include="GameCondition\CausticsOverlay.cs" />
-    <Compile Include="Patches\MapGenerator_GenerateMap_Patch.cs" />
-    <Compile Include="Patches\Patch_FertilityGrid_CalculateFertilityAt.cs" />
-    <Compile Include="Patches\Patch_PlantUtility_CanEverPlantAt.cs" />
-    <Compile Include="Patches\Patch_Tile_WaterCovered.cs" />
-    <Compile Include="Patches\Patch_WorldGenStep_Terrain_GenerateTileFor.cs" />
-    <Compile Include="Terrain Modifications\PlantExtension.cs" />
-    <Compile Include="Terrain Modifications\RGBColorPicker.cs" />
-    <Compile Include="Terrain Modifications\TerrainDefModifier.cs" />
-    <Compile Include="Terrain Modifications\NaturalStoneExtension.cs" />
+    <Compile Include="Terrain and Plants\Patch_FertilityGrid_CalculateFertilityAt.cs" />
+    <Compile Include="Terrain and Plants\Patch_PlantUtility_CanEverPlantAt.cs" />
+    <Compile Include="BiomeGen\Patch_Tile_WaterCovered.cs" />
+    <Compile Include="BiomeGen\Patch_WorldGenStep_Terrain_GenerateTileFor.cs" />
+    <Compile Include="Terrain and Plants\PlantExtension.cs" />
+    <Compile Include="GameCondition\RGBColorPicker.cs" />
+    <Compile Include="Terrain and Plants\TerrainDefModifier.cs" />
+    <Compile Include="Terrain and Plants\NaturalStoneExtension.cs" />
     <Compile Include="GameCondition\GameCondition_UnderWater.cs" />
-    <Compile Include="Patches\PatchClass.cs" />
-    <Compile Include="GameCondition\UnderWaterDefOf.cs" />
-    <Compile Include="GameCondition\UnderWaterGameConditionDef.cs" />
+    <Compile Include="PatchClass.cs" />
+    <Compile Include="UnderWaterDefOf.cs" />
+    <None Include="GameCondition\UnderWaterGameConditionDef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Terrain Modifications\UnderwaterBiome.cs" />
-    <Compile Include="Terrain Modifications\UnderwaterBiomeSettings.cs" />
+    <Compile Include="UnderwaterBiome.cs" />
+    <Compile Include="GameCondition\UnderwaterBiomeSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
