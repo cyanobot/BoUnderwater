@@ -23,6 +23,13 @@ namespace BoUnderwater
         private static RGBColorPicker Sky_colorPicker_ShadowNight;
         private static RGBColorPicker Sky_colorPicker_Overlay;
 
+        //Murk settings
+
+        public static Color Murk_Color = new Color(0.46f, 0.45f, 0.35f);
+
+        //Murk helpers
+        private static RGBColorPicker Murk_colorPicker;
+
         //Caustics settings
 
         public static float Caustics_Opacity = 0.14f;
@@ -73,6 +80,10 @@ namespace BoUnderwater
             Scribe_Values.Look(ref Sky_Saturation, "Sky_Saturation", Sky_Saturation, true);
             Scribe_Values.Look(ref Sky_Glow, "Sky_Glow", Sky_Glow);
 
+            //Murk settings
+
+            Scribe_Values.Look(ref Murk_Color, "Murk_Color", Murk_Color, true);
+
             //Caustics settings
 
             Scribe_Values.Look(ref Caustics_Opacity, "Caustics_Opacity", Caustics_Opacity, true);
@@ -114,6 +125,8 @@ namespace BoUnderwater
             Sky_colorPicker_ShadowDay = new RGBColorPicker(Sky_ColorShadowDay);
             Sky_colorPicker_ShadowNight = new RGBColorPicker(Sky_ColorShadowNight);
             Sky_colorPicker_Overlay = new RGBColorPicker(Sky_ColorOverlay);
+
+            Murk_colorPicker = new RGBColorPicker(Murk_Color);
 
             Caustics_colorPicker = new RGBColorPicker(Caustics_Color);
             Caustics_colorPicker2 = new RGBColorPicker(Caustics_Color2);
@@ -160,6 +173,17 @@ namespace BoUnderwater
 
             listingStandard.Label("Sky Glow: " + Sky_Glow.ToString("F2"));
             Sky_Glow = listingStandard.Slider(Sky_Glow, 0f, 1f);
+
+            //Murk settings
+
+            listingStandard.GapLine();
+            listingStandard.Label("Murk Settings");
+            listingStandard.GapLine();
+
+            listingStandard.Gap();
+            listingStandard.Label("Murk Color");
+            Rect colorRect_Murk = listingStandard.GetRect(30f);
+            Murk_Color = Murk_colorPicker.Draw(colorRect_Murk);
 
             //Caustics settings
 
@@ -250,7 +274,7 @@ namespace BoUnderwater
             listingStandard.End();
             Widgets.EndScrollView();
 
-            BundleLoader.UpdateCausticsMaterial();
+            AssetLoader.UpdateMaterials();
         }
     }
 }

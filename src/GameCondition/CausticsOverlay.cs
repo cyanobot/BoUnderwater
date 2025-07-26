@@ -8,25 +8,10 @@ namespace BoUnderwater
     {
         public Material Material;
 
-        private UnderwaterBiomeSettings _Settings;
-        private UnderwaterBiomeSettings Settings
-        {
-            get
-            {
-                if (_Settings == null)
-                {
-                    _Settings = LoadedModManager.GetMod<UnderwaterBiome>().GetSettings<UnderwaterBiomeSettings>();
-                }
-
-                return _Settings;
-            }
-        }
-        public const string CausticShaderAssetName = "causticsshader";
-
         public CausticsOverlay()
         {
-            this.Material = BundleLoader.CausticsMaterial;
-            BundleLoader.UpdateCausticsMaterial();
+            this.Material = AssetLoader.CausticsMaterial;
+            AssetLoader.UpdateCausticsMaterial();
         }
 
         public void UpdateZoom()

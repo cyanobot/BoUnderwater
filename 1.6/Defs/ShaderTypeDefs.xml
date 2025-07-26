@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ShaderTypeDef>
+	<defName>UnderwaterMurk</defName>
+	<shaderPath>Shaders/murkshader</shaderPath>
+</ShaderTypeDef>
+
+</Defs>

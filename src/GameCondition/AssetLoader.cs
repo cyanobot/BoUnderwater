@@ -11,7 +11,7 @@ using BiomesCore.ModSettings;
 namespace BoUnderwater
 {
     [StaticConstructorOnStartup]
-    public static class BundleLoader
+    public static class AssetLoader
     {
         public const string CausticShaderAssetName = "causticsshader";
 
@@ -22,8 +22,13 @@ namespace BoUnderwater
         public static Texture2D CausticsSecondTex = ContentFinder<Texture2D>.Get("Layer2");
         public static Texture2D CausticsDistortTex = ContentFinder<Texture2D>.Get("DistortionNoise");
 
-        static BundleLoader()
+        public static Shader MurkShader;
+        public static Material MurkMaterial;
+
+        static AssetLoader()
         {
+            DebugAssetBundles();
+
             if (CausticsShader == null)
             {
                 Log.Error($"Could not find shader {CausticShaderAssetName} in assets.");
@@ -45,6 +50,26 @@ namespace BoUnderwater
 
             CausticsMaterial.SetColor("_Color", new Color(1, 1, 1));
             CausticsMaterial.SetColor("_Color2", new Color(1, 1, 1));
+
+            ShaderDatabase.LoadShader(UnderWaterDefOf.UnderwaterMurk, out MurkShader, out _);
+            if (MurkShader == null)
+            {
+                Log.Error($"Could not find murk shader.");
+                return;
+            }
+
+            MurkMaterial = new Material(MurkShader);
+        }
+
+        public static void DebugAssetBundles()
+        {
+            foreach (var bundle in UnderwaterBiome.mcp.assetBundles.loadedAssetBundles)
+            {
+                Log.Message($"Loaded asset bundle:{bundle}" +
+                    $", name: {bundle.name}" +
+                    ", GetAllAssetNames: [" +bundle.GetAllAssetNames().ToStringSafeEnumerable() + "]"
+                    );
+            }
         }
 
         public static Shader GetShaderFromAssets(string shaderAssetName)
@@ -67,6 +92,12 @@ namespace BoUnderwater
 
             Debug.LogWarning($"Shader '{shaderAssetName}' not found in any asset bundle or by name.");
             return ShaderDatabase.DefaultShader;
+        }
+
+        public static void UpdateMaterials()
+        {
+            UpdateCausticsMaterial();
+            UpdateMurkMaterial();
         }
 
         public static void UpdateCausticsMaterial()
@@ -101,6 +132,11 @@ namespace BoUnderwater
             CausticsMaterial.SetFloat("_DistortionStrR", UnderwaterBiomeSettings.Caustics_DistortionStrR);
             CausticsMaterial.SetFloat("_DistortionStrG", UnderwaterBiomeSettings.Caustics_DistortionStrG);
 
+        }
+
+        public static void UpdateMurkMaterial()
+        {
+            MurkMaterial.SetColor("_Color", UnderwaterBiomeSettings.Murk_Color);
         }
     }
 }

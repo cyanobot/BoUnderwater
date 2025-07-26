@@ -21,6 +21,7 @@ namespace BoUnderwater
         private float Glow => UnderwaterBiomeSettings.Sky_Glow; // strength of any actual light in each cell on the map
 
         private CausticsOverlay CausticsOverlay;
+        private MurkOverlay MurkOverlay;
 
         private List<SkyOverlay> ConditionOverlays = new List<SkyOverlay>();
 
@@ -64,7 +65,10 @@ namespace BoUnderwater
 
         public override List<SkyOverlay> SkyOverlays(Map map)
         {
-            return new List<SkyOverlay>() { new CausticsOverlay() };
+            return new List<SkyOverlay>() { 
+                new CausticsOverlay() ,
+                new MurkOverlay()
+            };
         }
 
         public override float SkyTargetLerpFactor(Map map)
@@ -79,6 +83,13 @@ namespace BoUnderwater
                 float dayPercent = GenCelestial.CurCelestialSunGlow(Find.CurrentMap);
                 Color lerpedSkyColor = Color.Lerp(SkyColorNight, SkyColor, dayPercent);
                 Color lerpedShadowColor = Color.Lerp(ShadowColorNight, ShadowColor, dayPercent);
+
+                //additionally, adjust shadow color by murk intensity, so that shadows disappear as murk increases
+                Color murkShadowColor = UnderwaterBiomeSettings.Murk_Color;
+                float murkOpacity = murkShadowColor.a;
+                murkShadowColor.a = 1 - murkOpacity;
+                lerpedShadowColor = Color.Lerp(lerpedShadowColor, murkShadowColor, murkOpacity);
+
                 return new SkyColorSet(lerpedSkyColor, lerpedShadowColor, OverlayColor, Saturation);
             }
         }

@@ -76,8 +76,9 @@
     <Compile Include="Comps\CompProperties_ProximityComp.cs" />
     <Compile Include="Comps\CompProperties_Proximity_ShowMote.cs" />
     <Compile Include="BiomeGen\BiomeWorker_UnderwaterIslands.cs" />
-    <Compile Include="GameCondition\BundleLoader.cs" />
+    <Compile Include="GameCondition\AssetLoader.cs" />
     <Compile Include="GameCondition\CausticsOverlay.cs" />
+    <Compile Include="GameCondition\MurkOverlay.cs" />
     <Compile Include="Terrain and Plants\Patch_FertilityGrid_CalculateFertilityAt.cs" />
     <Compile Include="Terrain and Plants\Patch_PlantUtility_CanEverPlantAt.cs" />
     <Compile Include="BiomeGen\Patch_Tile_WaterCovered.cs" />
